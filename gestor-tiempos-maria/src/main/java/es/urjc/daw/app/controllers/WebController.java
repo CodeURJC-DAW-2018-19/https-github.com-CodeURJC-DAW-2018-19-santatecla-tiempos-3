@@ -1,4 +1,4 @@
-package es.urjc.daw.pueba_maria.controllers;
+package es.urjc.daw.app.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-import es.urjc.daw.pueba_maria.user.UserComponent;
+import es.urjc.daw.app.user.UserComponent;
 
 
 @Controller
@@ -25,8 +25,21 @@ public class WebController {
 	}
 	
 	@GetMapping("/")
-	public String showBooks(Model model) {
+	public String root(Model model) {
 		return "home";
+	}
+
+	@GetMapping("/category")
+	public String showCategories(Model model){
+		return "category_view";
+	}
+	@GetMapping("/event")
+	public String showEvents(Model model){
+		return "event_view";
+	}
+	@GetMapping("/time")
+	public String showTime(Model model){
+		return "time_view";
 	}
 
 }

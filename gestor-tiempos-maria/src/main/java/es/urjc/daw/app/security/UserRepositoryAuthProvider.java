@@ -1,4 +1,4 @@
-package es.urjc.daw.pueba_maria.security;
+package es.urjc.daw.app.security;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +14,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import es.urjc.daw.pueba_maria.user.User;
-import es.urjc.daw.pueba_maria.user.UserComponent;
-import es.urjc.daw.pueba_maria.user.UserRepository;
+import es.urjc.daw.app.user.User;
+import es.urjc.daw.app.user.UserComponent;
+import es.urjc.daw.app.user.UserRepository;
 
 /**
  * This class is used to check http credentials against database data. Also it

@@ -1,4 +1,4 @@
-package es.urjc.daw.pueba_maria;
+package es.urjc.daw.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

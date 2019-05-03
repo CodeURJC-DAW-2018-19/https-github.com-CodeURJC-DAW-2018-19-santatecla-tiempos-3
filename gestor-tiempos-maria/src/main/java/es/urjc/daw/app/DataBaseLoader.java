@@ -1,12 +1,10 @@
-package es.urjc.daw.pueba_maria;
-
-
+package es.urjc.daw.app;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import es.urjc.daw.pueba_maria.user.User;
-import es.urjc.daw.pueba_maria.user.UserRepository;
+import es.urjc.daw.app.user.User;
+import es.urjc.daw.app.user.UserRepository;
 
 import javax.annotation.PostConstruct;
 

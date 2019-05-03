@@ -1,4 +1,4 @@
-package es.urjc.daw.pueba_maria.security;
+package es.urjc.daw.app.security;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,8 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import es.urjc.daw.pueba_maria.user.User;
-import es.urjc.daw.pueba_maria.user.UserComponent;
+import es.urjc.daw.app.user.User;
+import es.urjc.daw.app.user.UserComponent;
 
 
 /**

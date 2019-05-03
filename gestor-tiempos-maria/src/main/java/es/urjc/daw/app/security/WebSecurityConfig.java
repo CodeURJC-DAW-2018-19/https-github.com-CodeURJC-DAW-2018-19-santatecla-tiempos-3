@@ -1,4 +1,4 @@
-package es.urjc.daw.pueba_maria.security;
+package es.urjc.daw.app.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

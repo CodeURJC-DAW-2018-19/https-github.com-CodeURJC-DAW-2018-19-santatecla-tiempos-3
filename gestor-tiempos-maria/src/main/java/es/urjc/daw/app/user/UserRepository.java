@@ -1,4 +1,4 @@
-package es.urjc.daw.pueba_maria.user;
+package es.urjc.daw.app.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

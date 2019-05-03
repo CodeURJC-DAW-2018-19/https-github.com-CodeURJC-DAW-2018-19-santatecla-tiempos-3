@@ -1,4 +1,4 @@
-package es.urjc.daw.pueba_maria.user;
+package es.urjc.daw.app.user;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
