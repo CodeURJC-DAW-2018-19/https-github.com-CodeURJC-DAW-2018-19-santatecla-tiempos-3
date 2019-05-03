@@ -1,4 +1,6 @@
-<div id="event" style="display: none" class="content">
+{{>header}}
+
+<div id="event"  class="content">
 
     <div class="container-fluid">
         <div class="col-lg-12 col-md-12">
@@ -26,7 +28,7 @@
                                 <tbody>
                                     {{#eventos}}
                                     <tr>
-                                        {{#estudiante}}
+                                        {{#logged}}
                                         <td class="periodIndex">{{-index}}</td>
                                         <td class="periodContent"><a data-toggle="modal" data-target="#showEventModal{{idEvent}}"
                                                 href="#">{{name}}</a></td>
@@ -51,11 +53,11 @@
                                             </div>
                                         </div>
 
-                                        {{/estudiante}}
-                                        {{^estudiante}}
+                                        {{/logged}}
+                                        {{^logged}}
                                         <td class="periodIndex">{{-index}}</td>
                                         <td class="periodContent">{{name}}</td>
-                                        {{/estudiante}}
+                                        {{/logged}}
                                         {{#admin}}
                                         <td class="td-actions text-right periodButtons">
 
@@ -208,3 +210,4 @@
     </div>
 </div>
 {{/admin}}
+{{>footer}}

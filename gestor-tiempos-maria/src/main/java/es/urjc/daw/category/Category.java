@@ -1,4 +1,4 @@
-package es.urjc.code.daw.category;
+package es.urjc.daw.category;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,8 +19,6 @@ public class Category{
 
 /*	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
-
-	@Column(unique=true)
 */
 	@Column(unique=true)
 	

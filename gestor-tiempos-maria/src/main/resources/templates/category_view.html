@@ -1,3 +1,4 @@
+{{>header}}
 <div id="category" class="content">
     <div class="container-fluid">
         <div class="col-lg-12 col-md-12">
@@ -25,7 +26,7 @@
                                 <tbody>
                                     {{#categorias}}
                                     <tr>
-                                        {{#estudiante}}
+                                        {{#logged}}
                                         <td class="periodIndex">{{-index}}</td>
                                         <td class="periodContent"><a data-toggle="modal" data-target="#showCategoryModal{{idCategory}}"
                                                 href="#">{{name}}</a></td>
@@ -58,11 +59,11 @@
                                             </div>
                                         </div>
 
-                                        {{/estudiante}}
-                                        {{^estudiante}}
+                                        {{/logged}}
+                                        {{^logged}}
                                         <td class="periodIndex">{{-index}}</td>
                                         <td class="periodContent">{{name}}</td>
-                                        {{/estudiante}}
+                                        {{/logged}}
                                         {{#admin}}
                                         <td class="td-actions text-right periodButtons">
 
@@ -186,3 +187,4 @@
         $(node).attr("href", "#")
     }
 </script>
+{{>footer}}

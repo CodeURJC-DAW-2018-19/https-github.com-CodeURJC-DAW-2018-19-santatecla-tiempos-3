@@ -1,3 +1,4 @@
+{{>header}}
 <div id="time" style="display: none" class="content">
 	<div class="container-fluid">
 		<div class="row">
@@ -29,7 +30,7 @@
 											{{#intervalos}}
 											<tr>
 												<td style="width: 5% !important">{{-index}}</td>
-												{{#estudiante}}
+												{{#logged}}
 												<td style="width: 30% !important">
 													<form id="myForm" action="/openintervaltab{{idInterval}}">
 														<a href='#' onclick='this.parentNode.submit(); return false;'>{{name}}</a>
@@ -55,9 +56,9 @@
 														</div>
 													</div>
 												</div>
-												{{/estudiante}} {{^estudiante}}
+												{{/logged}} {{^logged}}
 												<td style="width: 35% !important">{{name}}</td>
-												{{/estudiante}}
+												{{/logged}}
 
 
 												<td style="width: 25% !important">{{start}}</td>
@@ -205,3 +206,4 @@
 	</div>
 </div>
 {{/admin}}
+{{>footer}}

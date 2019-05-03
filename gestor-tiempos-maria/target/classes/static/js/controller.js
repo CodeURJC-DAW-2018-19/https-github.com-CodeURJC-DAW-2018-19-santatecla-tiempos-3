@@ -13,8 +13,8 @@ $(document).ready(function () {
         console.log (formData);
         $.ajax({
             type: 'POST',
-            url: URL + "/addCategory",
-            data: formData,
+            url: URL + "/category/addCategory",
+            data: formData.name,
             headers: {
                 "Content-Type": "application/json"
             }
@@ -129,19 +129,12 @@ function loginindex(data) {
     }
 }
 function goTo(route) {
-    //Hide all sections and show the section selected
-    document.getElementById("event").style.display = "none";
-    document.getElementById("time").style.display = "none";
-    document.getElementById("category").style.display = "none";
-    document.getElementById("view").style.display = "none";
-    document.getElementById(route).style.display = "block";
-
     //Change css of sidebar (active class)
     document.getElementById("nav_category").className = "nav_item"
     document.getElementById("nav_time").className = "nav_item"
     document.getElementById("nav_event").className = "nav_item"
     //document.getElementById("nav_view").className = "nav_item"
-    document.getElementById("nav_" + route).className = "nav_item active"
+    document.getElementById("nav_" + route).className = "nav_item active" 
 }
 /*
 document.getElementById('actualidad').onchange = function () {
