@@ -28,18 +28,10 @@ public class WebController {
 	public String root(Model model) {
 		return "home";
 	}
-
-	@GetMapping("/category")
-	public String showCategories(Model model){
-		return "category_view";
+	@GetMapping("/home")
+	public String root2(Model model) {
+		return "home";
 	}
-	@GetMapping("/event")
-	public String showEvents(Model model){
-		return "event_view";
-	}
-	@GetMapping("/time")
-	public String showTime(Model model){
-		return "time_view";
-	}
+	
 
 }

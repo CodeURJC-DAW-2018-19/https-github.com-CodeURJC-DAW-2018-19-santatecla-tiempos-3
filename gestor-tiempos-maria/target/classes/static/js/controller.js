@@ -1,6 +1,9 @@
-const URL = "https://localhost:8443"
+///const URL = "https://localhost:8443";
+
 
 $(document).ready(function () {
+
+    
     /////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////--------CREATE CATEGORY-----------////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////
@@ -129,13 +132,24 @@ function loginindex(data) {
     }
 }
 function goTo(route) {
-    //Change css of sidebar (active class)
-    document.getElementById("nav_category").className = "nav_item"
-    document.getElementById("nav_time").className = "nav_item"
-    document.getElementById("nav_event").className = "nav_item"
-    //document.getElementById("nav_view").className = "nav_item"
-    document.getElementById("nav_" + route).className = "nav_item active" 
-}
+    console.log ("Ha entrado en route");
+        //Hide all sections and show the section selected
+        document.getElementById("event").style.display = "none";
+        document.getElementById("time").style.display = "none";
+        document.getElementById("category").style.display = "none";
+        document.getElementById("view").style.display = "none";
+        document.getElementById(route).style.display = "block";
+
+        //Change css of sidebar (active class)
+        var x = document.getElementById("nav_category").className ; 
+        console.log(x);
+        document.getElementById("nav_category").className = "nav-item";
+        
+        document.getElementById("nav_time").className = "nav-item";
+        document.getElementById("nav_event").className = "nav-item";
+        //document.getElementById("nav_view").className = "nav_item";
+        document.getElementById("nav_" + route).className = "nav-item active";
+    }
 /*
 document.getElementById('actualidad').onchange = function () {
     document.getElementById('dateDisabled').disabled = this.checked;
