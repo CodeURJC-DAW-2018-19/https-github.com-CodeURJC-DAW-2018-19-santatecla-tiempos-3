@@ -92,7 +92,7 @@
 							</div>
 							{{^logged}}
 							<div class="modal-body">
-								<form method="post" action="/login">
+								<form method="post" action="/login" method ="post">
 									<div class="card-body">
 										<div class="form-group bmd-form-group">
 											<div class="input-group">
@@ -115,7 +115,6 @@
 												 required />
 											</div>
 										</div>
-										<input type="hidden" name="_csrf" value="{{token}}"/>
 										<input id="inputSubmit" class="btn btn-primary btn-block" type="submit" value="Iniciar Sesión" /> 
 										<input type="hidden" name="_csrf" value="{{token}}" />
 									</div>

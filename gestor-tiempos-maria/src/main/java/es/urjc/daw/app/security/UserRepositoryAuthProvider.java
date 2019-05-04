@@ -37,10 +37,10 @@ public class UserRepositoryAuthProvider implements AuthenticationProvider {
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
-		String username = authentication.getName();
+		String email = authentication.getName();
 		String password = (String) authentication.getCredentials();
 
-		User user = userRepository.findByEmail(username);
+		User user = userRepository.findByEmail(email);
 
 		if (user == null) {
 			throw new BadCredentialsException("User not found");
