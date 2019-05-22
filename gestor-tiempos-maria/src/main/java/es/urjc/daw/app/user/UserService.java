@@ -15,7 +15,9 @@ public class UserService {
 	public User findOne(String name) {
 		return repository.findByEmail(name);
 	}
-
+	public User findOneById(long id) {
+		return repository.findOneById(id);
+	}
 	public List<User> findAll() {
 		return repository.findAll();
 	}

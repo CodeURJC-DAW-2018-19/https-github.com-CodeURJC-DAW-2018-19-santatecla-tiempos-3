@@ -12,6 +12,10 @@ public class IntervalService {
 	public Interval findOne(Long id) {
         return repository.getOne(id);
     }
+	
+	public Interval findOneByName(String name) {
+		return repository.findByName(name);
+	}
 	public List<Interval> findAll() {
         return repository.findAll();
     }
