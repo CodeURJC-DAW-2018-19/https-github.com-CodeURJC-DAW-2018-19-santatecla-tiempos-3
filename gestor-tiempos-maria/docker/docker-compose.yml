@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  database:
+    image: #nombre de image
+    command: #comando
+    environment:
+      -MYSQL_ROOT_PASSWORD:
+      -MYSQL_DATABASE:
+      -MYSQL_USER:
+      -MYSQLPASSWORD:
+
+    ports:
+      - ""
