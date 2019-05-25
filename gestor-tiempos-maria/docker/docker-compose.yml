@@ -12,3 +12,13 @@ services:
 
     ports:
       - ""
+  daw:
+    image: #nombre de image
+    ports:
+      - ""
+    depends_on:
+      - database
+    environment:
+      SPRING_DATASOURCE_URL:
+      SPRING_DATASOURCE_USERNAME:
+      SPRING_DATASOURCE_PASSWORD:
