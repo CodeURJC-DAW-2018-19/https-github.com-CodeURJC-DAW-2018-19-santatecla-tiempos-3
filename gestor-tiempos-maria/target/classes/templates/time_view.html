@@ -83,7 +83,7 @@
 																		</button>
 																	</div>
 																	<div class="modal-body">
-																		<form action="/setInterval{{idInterval}}">
+																		<form action="/interval/set/{{idInterval}}">
 																			<div class="form-row">
 																				<div class="form-group col-md-12">
 																					<input name="intervalName" type="text"
@@ -117,7 +117,7 @@
 															</div>
 														</div>
 													</div>
-													<form action="/deleteInterval{{idInterval}}">
+													<form action="/interval/delete/{{idInterval}}">
 														<button type="submit" title="Remove"
 															class="btn btn-danger btn-link btn-sm">
 															<i class="material-icons">delete</i>
@@ -171,7 +171,7 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<form action="/addInterval">
+					<form action="/interval/create">
 						<div class="form-row">
 							<div class="form-group col-md-12">
 								<input name="intervalName" type="text" class="form-control"

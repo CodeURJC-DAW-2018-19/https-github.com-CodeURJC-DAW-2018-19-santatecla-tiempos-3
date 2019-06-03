@@ -27,4 +27,7 @@ public class IntervalService {
     public void delete(long idInterval) {
         repository.deleteById(idInterval);
     }
+    public Interval findByIdInterval(Long idInterval){
+    	return repository.findByIdInterval(idInterval);
+    }
 }
