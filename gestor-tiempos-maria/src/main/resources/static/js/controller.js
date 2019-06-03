@@ -1,37 +1,55 @@
-///const URL = "https://localhost:8443";
-
-
+const URL = "https://localhost:8443";
 $(document).ready(function () {
+    
+    function pruebaPOST(){
+      
+    }
 
     
     /////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////--------CREATE CATEGORY-----------////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////
     
-   $("#createCategory").submit(function (event) {
+   /*$("#createCategory").submit(function (event) {
         //get the form data
-        var formData = {
+     var formData = {
             "name": $("input[name='categoryName']").val()
         }
-        console.log (formData);
         $.ajax({
             type: 'POST',
-            url: URL + "/category/addCategory",
-            data: formData.name,
+            url: URL + "/api/categories/prueba",
+            //data:JSON.stringify(formData.name),
             headers: {
                 "Content-Type": "application/json"
             }
         }).done(function(data){
-            console.log("EXITO");
-            console.log (data);
+            console.log("EXITO, estamos en el done de AJAX");
+            //console.log (data);
         });
-    });
+    });*/
 
     /////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////----------SET CATEGORY------------////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////
-    $("#setCategory").click(function () {
-
+    $("#pruebaPOST").click(function () {
+        console.log("Estamos dentro de prueba POST");
+        var categoryName = document.getElementById("inputNameNewCategory").value;
+        console.log (categoryName);
+        var token = document.getElementById("tokenValue").value;
+        console.log(token);
+        $.ajax({
+            type: 'POST',
+            url: URL + "/category/create",
+            //data:JSON.stringify(categoryName),
+            formdata:{
+                
+            }
+            
+         
+        }).done(function(data){
+            console.log("EXITO, estamos en el done de AJAX");
+            //console.log (data);
+        });
     });
     /////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////--------DELETE CATEGORY-----------////////////////////////////////

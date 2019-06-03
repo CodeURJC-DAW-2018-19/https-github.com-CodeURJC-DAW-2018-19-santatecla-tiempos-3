@@ -85,7 +85,7 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form action="/setCategory{{idCategory}}">
+                                                                <form action="/category/set/{{idCategory}}">
                                                                     <div class="form-group">
                                                                         <input name="categoryName" type="text" class="form-control"
                                                                             id="inputNameNewCategory" placeholder="Nombre">
@@ -97,7 +97,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <form action="/deleteCategory{{idCategory}}">
+                                            <form action="/category/delete/{{idCategory}}">
                                                 <button type="submit" title="Remove" class="btn btn-danger btn-link btn-sm">
                                                     <i class="material-icons">delete</i>
                                                 </button>
@@ -124,10 +124,6 @@
                         <div class="col-md-4"></div>
                     </div>
                     <br>
-
-
-
-
                     {{#admin}}
                     <button class="btn btn-primary btn-fab btn-fab btn-round" data-toggle="modal" data-target="#newCategoryModal">
                         <i class="material-icons">add</i>
@@ -152,20 +148,21 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form  id="createCategory" action="">
+               <!--   <div class="form-group">
+                        <input name="categoryName" type="text" class="form-control" id="inputNameNewCategory"
+                            placeholder="Nombre">
+                    </div>
+                    <button id = "pruebaPOST" class="btn btn-primary" data-dismiss="modal" aria-label="Close">ACEPTAR</button>
+                    <input id="tokenValue"type="hidden" name="_csrf" value="{{token}}" />
+                -->
+                    <form action="/category/create">
                         <div class="form-group">
                             <input name="categoryName" type="text" class="form-control" id="inputNameNewCategory"
                                 placeholder="Nombre">
                         </div>
                         <button type="submit" class="btn btn-primary">ACEPTAR</button>
-                    </form>
-                   <!-- <form action="/addCategory">
-                        <div class="form-group">
-                            <input name="categoryName" type="text" class="form-control" id="inputNameNewCategory"
-                                placeholder="Nombre">
-                        </div>
-                        <button type="submit" class="btn btn-primary">ACEPTAR</button>
-                    </form>-->
+                        <input type="hidden" name="_csrf" value="{{token}}" />
+                    </form>-
                 </div>
             </div>
         </div>

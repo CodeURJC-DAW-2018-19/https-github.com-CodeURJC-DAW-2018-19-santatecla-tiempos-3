@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import es.urjc.daw.app.category.Category;
 import es.urjc.daw.app.category.CategoryService;
@@ -26,6 +27,18 @@ public class WebController {
 	@Autowired private  IntervalService intervalService;	
 
 	 
+	
+	@GetMapping("/")
+	public String root(Model model) {
+		return "home";
+	}
+	@GetMapping("/home")
+	public String root2(Model model) {
+		return "home";
+	}
+
+	      
+     
 	@ModelAttribute
 	public void addUserToModel(Model model) {
 		boolean logged = userComponent.getLoggedUser() != null;
@@ -44,15 +57,4 @@ public class WebController {
 		List<Interval> intervals = intervalService.findAll();
 		model.addAttribute("intervalos", intervals);
 	}
-	
-	@GetMapping("/")
-	public String root(Model model) {
-		return "home";
-	}
-	@GetMapping("/home")
-	public String root2(Model model) {
-		return "home";
-	}
-	
-
 }
