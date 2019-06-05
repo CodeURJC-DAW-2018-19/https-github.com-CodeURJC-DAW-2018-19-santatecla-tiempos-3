@@ -16,7 +16,7 @@ public class CategoryController {
 	@Autowired private  CategoryService categoryService;	
 
 	@RequestMapping("/category/create") 
-	public String createCategory(Model model, @PathVariable  String categoryName) {
+	public String createCategory(Model model, @RequestParam String categoryName) {
 		Category newCategory = new Category(categoryName);
 		categoryService.save(newCategory);
 		webcontroller.addUserToModel(model);
