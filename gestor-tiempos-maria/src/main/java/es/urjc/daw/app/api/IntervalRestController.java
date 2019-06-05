@@ -24,14 +24,33 @@ public class IntervalRestController {
 		return intervalos;
 	}
 	
-	@GetMapping("/getInterval/{id}")
+	@GetMapping("/get/{id}")
 	public Interval getIntervalById(@PathVariable long id) {
 		return service.findOne(id);
 	}
 	
-	@GetMapping("/getInterval")
+	@GetMapping("/get")
 	public Interval getIntervalByName(@RequestParam String name) {
 		return service.findOneByName(name);
+	}
+
+	@PostMapping("/create")
+	@ResponseStatus(HttpStatus.CREATED)
+	public void createNewInterval(@RequestParam Interval interval) {
+		service.save(interval);
+	}
+	
+	/*@PostMapping("/set/{id}")
+	@ResponseStatus(HttpStatus.CREATED)
+	public void setIntervalyById(@PathVariable long id, @RequestParam String name) {
+		Interval interval = new Interval(name);
+        interval.setIdInterval(id);
+        service.save(category);
+	}*/
+
+	@DeleteMapping("/delete/{id}")
+	public void deleteIntervalById(@PathVariable long id){
+		service.delete(id);
 	}
 	
 	

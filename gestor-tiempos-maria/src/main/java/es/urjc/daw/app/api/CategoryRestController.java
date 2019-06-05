@@ -23,25 +23,32 @@ public class CategoryRestController {
 	public Collection<Category> getCategories() {
 		return service.findAll();
 	}
-	@GetMapping("/getCategory/{id}")
+	@GetMapping("/get/{id}")
 	public Category getCategoryrById(@PathVariable long id) {
 		return service.findOne(id);
 	}
 	 
-	@GetMapping("/getCategory")
+	@GetMapping("/get")
 	public Category getCategoryByName(@RequestParam String name) {
 		return service.findOneByName(name);
 	}
    
-	@PostMapping("/createCategory")
+	@PostMapping("/create")
 	@ResponseStatus(HttpStatus.CREATED)
-	public void createNewCategory() {
-		System.out.println("*** Hemos entrado en el post de new category");
+	public void createNewCategory(@RequestParam Category category) {
+		service.save(category);
 	}
 	
-	@PostMapping("/prueba")
+	@PostMapping("/set/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public void pruebaPost() {
-		System.out.println("*** Hemos entrado en el post");
+	public void setCategoryById(@PathVariable long id, @RequestParam String name) {
+		Category category = new Category(name);
+        category.setIdCategory(id);
+        service.save(category);
+	}
+
+	@DeleteMapping("/delete/{id}")
+	public void deleteCategoryById(@PathVariable long id){
+		service.delete(id);
 	}
 } 

@@ -21,13 +21,32 @@ public class EventRestController {
 		return service.findAll();
 	}
 	
-	@GetMapping("/getEvent/{id}")
-	public Event getUserById(@PathVariable long id) {
+	@GetMapping("/get/{id}")
+	public Event getEventById(@PathVariable long id) {
 		return service.findOne(id);
 	}
 	
-	@GetMapping("/getCategory")
+	@GetMapping("/get")
 	public Event getEventByName(@RequestParam String name) {
 		return service.findOneByName(name);
+	}
+
+	@PostMapping("/create")
+	@ResponseStatus(HttpStatus.CREATED)
+	public void createNewEvent(@RequestParam Event event) {
+		service.save(event);
+	}
+	
+	/*@PostMapping("/set/{id}")
+	@ResponseStatus(HttpStatus.CREATED)
+	public void setEventById(@PathVariable long id, @RequestParam Category category) {
+		Event event = new Event(categoryName);
+        event.setIdEvent(id);
+        service.save(event);
+	}*/
+
+	@DeleteMapping("/delete/{id}")
+	public void deleteEventById(@PathVariable long id){
+		service.delete(id);
 	}
 }
