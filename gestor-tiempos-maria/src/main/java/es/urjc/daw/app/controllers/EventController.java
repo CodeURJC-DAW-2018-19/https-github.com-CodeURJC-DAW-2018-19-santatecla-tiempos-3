@@ -15,7 +15,7 @@ public class EventController {
 	@Autowired private  WebController webcontroller;	
 	@Autowired private  EventService eventService;	
 	@RequestMapping("/event/create") 
-	public String createCategory(Model model, String name) {
+	public String createEvent(Model model, @RequestParam String name) {
 		Event newEvent = new Event(name);
 		eventService.save(newEvent);
 		webcontroller.addUserToModel(model);
