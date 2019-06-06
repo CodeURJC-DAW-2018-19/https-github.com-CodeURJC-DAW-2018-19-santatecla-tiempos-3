@@ -14,10 +14,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-    	http.csrf().disable();
-        http.authorizeRequests().antMatchers("/*").permitAll();
-
-        	
+    	//http.csrf().disable();
+    	String [] publicUrls = new String [] {
+                "/category/**"
+        };
+    	http.csrf().ignoringAntMatchers(publicUrls);
     	// Public pages
         http.authorizeRequests().antMatchers("/").permitAll();
         http.authorizeRequests().antMatchers("/home").permitAll();
@@ -26,10 +27,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/logout").permitAll();
 
         // Private pages (all other pages)
-        http.authorizeRequests().antMatchers("/category").hasAnyRole("STUDENT");
-        http.authorizeRequests().antMatchers("/category/**").hasAnyRole("ADMIN");        
-         
+       // http.authorizeRequests().antMatchers("/category").hasAnyRole("STUDENT");
+        //http.authorizeRequests().antMatchers("/category/**").hasAnyRole("ADMIN");
         
+
         // Login form
         http.formLogin().loginPage("/login");
         http.formLogin().usernameParameter("email");
