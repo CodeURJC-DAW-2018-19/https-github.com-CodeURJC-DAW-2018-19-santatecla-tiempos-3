@@ -2,23 +2,21 @@ package es.urjc.daw.app.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
+@Order(2)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public UserRepositoryAuthProvider userRepoAuthProvider;
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
-    	//http.csrf().disable();
-    	String [] publicUrls = new String [] {
-                "/category/**"
-        };
-    	http.csrf().ignoringAntMatchers(publicUrls);
+    protected void configure(HttpSecurity http) throws Exception {  
+    	
     	// Public pages
         http.authorizeRequests().antMatchers("/").permitAll();
         http.authorizeRequests().antMatchers("/home").permitAll();
@@ -27,8 +25,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/logout").permitAll();
 
         // Private pages (all other pages)
-       // http.authorizeRequests().antMatchers("/category").hasAnyRole("STUDENT");
-        //http.authorizeRequests().antMatchers("/category/**").hasAnyRole("ADMIN");
+        http.authorizeRequests().antMatchers("/category").hasAnyRole("STUDENT");
+        http.authorizeRequests().antMatchers("/category/**").hasAnyRole("ADMIN");
         
 
         // Login form

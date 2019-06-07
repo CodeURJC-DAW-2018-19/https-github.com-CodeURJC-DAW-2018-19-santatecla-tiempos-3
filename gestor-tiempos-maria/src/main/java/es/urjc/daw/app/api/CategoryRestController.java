@@ -41,7 +41,8 @@ public class CategoryRestController {
 	
 	@PostMapping("/prueba")
 	@ResponseStatus(HttpStatus.CREATED)
-	public void pruebaPost() {
+	public String pruebaPost() {
 		System.out.println("*** Hemos entrado en el post");
+		return "HA HECHO EL POST";
 	}
 } 
