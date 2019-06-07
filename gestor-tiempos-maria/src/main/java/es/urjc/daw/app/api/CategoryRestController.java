@@ -3,6 +3,7 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,5 +45,27 @@ public class CategoryRestController {
 	public String pruebaPost() {
 		System.out.println("*** Hemos entrado en el post");
 		return "HA HECHO EL POST";
+	}
+	///////////////////METHODS////////////////////
+	@PostMapping("/create")
+	public String createNewCategory(@RequestParam String name) {
+		Category newCategory = new Category(name);
+		
+		service.save(newCategory);
+		return "redirect:/";
+	}
+		
+	@PostMapping("/category/set/{id}")
+	public String setCategoryById(@PathVariable long id, @RequestParam String name) {
+		Category category = new Category(name);
+	       category.setIdCategory(id);
+	       service.save(category);
+	       return "redirect:/";
+	}
+
+	@DeleteMapping("/category/delete/{id}")
+	public String deleteCategoryById(@PathVariable long id){
+		service.delete(id);
+		return "redirect:/";
 	}
 } 

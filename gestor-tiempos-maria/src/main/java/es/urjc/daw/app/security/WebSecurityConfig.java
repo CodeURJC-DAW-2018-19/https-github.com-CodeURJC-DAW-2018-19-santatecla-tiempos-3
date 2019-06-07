@@ -28,6 +28,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/category").hasAnyRole("STUDENT");
         http.authorizeRequests().antMatchers("/category/**").hasAnyRole("ADMIN");
         
+        http.authorizeRequests().antMatchers("/event").hasAnyRole("STUDENT");
+        http.authorizeRequests().antMatchers("/event/**").hasAnyRole("ADMIN");
+        
+        http.authorizeRequests().antMatchers("/interval").hasAnyRole("STUDENT");
+        http.authorizeRequests().antMatchers("/interval/**").hasAnyRole("ADMIN");
+        
 
         // Login form
         http.formLogin().loginPage("/login");
