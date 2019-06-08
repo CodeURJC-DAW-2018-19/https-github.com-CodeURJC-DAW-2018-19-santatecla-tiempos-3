@@ -15,96 +15,92 @@
                         <div class="tab-pane active" id="profile">
                             <table class="table table-hover table-striped">
                                 <thead class="text-primary">
-                                <tr>
-                                    <th class="text-left periodIndex">#</th>
-                                    <th class="periodContent">Nombre</th>
-                                    {{#admin}}
-                                    <th class="text-left periodButtons">Actions</th>
-                                    {{/admin}}
-                                </tr>
+                                    <tr>
+                                        <th class="text-left periodIndex">#</th>
+                                        <th class="periodContent">Nombre</th>
+                                        {{#admin}}
+                                        <th class="text-left periodButtons">Actions</th>
+                                        {{/admin}}
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                {{#eventos}}
-                                <tr>
-                                    {{#logged}}
-                                    <td class="periodIndex">{{-index}}</td>
-                                    <td class="periodContent"><a data-toggle="modal"
-                                                                 data-target="#showEventModal{{idEvent}}"
-                                                                 href="#">{{name}}</a></td>
-                                    <!--Popup SHOW Event-->
-                                    <div class="modal fade" id="showEventModal{{idEvent}}" tabindex="-1" role="dialog">
-                                        <div class="modal-dialog modal-signup" role="document">
-                                            <div class="modal-content">
-                                                <div class="card card-signup card-plain">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title card-title">Mostar
-                                                            Evento: {{name}}</h5>
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                                aria-label="Close">
-                                                            <i class="material-icons">clear</i>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {{/logged}}
-                                    {{^logged}}
-                                    <td class="periodIndex">{{-index}}</td>
-                                    <td class="periodContent">{{name}}</td>
-                                    {{/logged}}
-                                    {{#admin}}
-                                    <td class="td-actions text-right periodButtons">
-
-                                        <button type="button" rel="tooltip" title="Edit Task"
-                                                class="btn btn-primary btn-link btn-sm"
-                                                data-toggle="modal" data-target="#setEventModal{{idEvent}}">
-                                            <i class="material-icons">edit</i>
-                                        </button>
-                                        <!--Popup SET Category-->
-                                        <div class="modal fade" id="setEventModal{{idEvent}}" tabindex="-1"
-                                             role="dialog">
+                                    {{#eventos}}
+                                    <tr>
+                                        {{#logged}}
+                                        <td class="periodIndex">{{-index}}</td>
+                                        <td class="periodContent"><a data-toggle="modal" data-target="#showEventModal{{idEvent}}"
+                                                href="#">{{name}}</a></td>
+                                        <!--Popup SHOW Event-->
+                                        <div class="modal fade" id="showEventModal{{idEvent}}" tabindex="-1" role="dialog">
                                             <div class="modal-dialog modal-signup" role="document">
                                                 <div class="modal-content">
                                                     <div class="card card-signup card-plain">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title card-title">Editar
-                                                                evento</h5>
+                                                            <h5 class="modal-title card-title">Mostar
+                                                                Evento: {{name}}</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-label="Close">
+                                                                aria-label="Close">
                                                                 <i class="material-icons">clear</i>
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="/event/set/{{idEvent}}">
-                                                                <div class="form-group">
-                                                                    <input name="eventName" type="text"
-                                                                           class="form-control"
-                                                                           id="inputNameNewEvent" placeholder="Nombre">
-                                                                </div>
-                                                                <button type="submit" class="btn btn-primary">EDITAR
-                                                                </button>
-                                                            </form>
+
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <form action="/event/delete/{{idEvent}}">
-                                            <button type="submit" title="Remove" class="btn btn-danger btn-link btn-sm">
-                                                <i class="material-icons">delete</i>
+
+                                        {{/logged}}
+                                        {{^logged}}
+                                        <td class="periodIndex">{{-index}}</td>
+                                        <td class="periodContent">{{name}}</td>
+                                        {{/logged}}
+                                        {{#admin}}
+                                        <td class="td-actions text-right periodButtons">
+
+                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm"
+                                                data-toggle="modal" data-target="#setEventModal{{idEvent}}">
+                                                <i class="material-icons">edit</i>
                                             </button>
-                                        </form>
-                                        <!--<button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                                            <!--Popup SET Category-->
+                                            <div class="modal fade" id="setEventModal{{idEvent}}" tabindex="-1" role="dialog">
+                                                <div class="modal-dialog modal-signup" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="card card-signup card-plain">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title card-title">Editar
+                                                                    evento</h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <i class="material-icons">clear</i>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form action="/event/set/{{idEvent}}">
+                                                                    <div class="form-group">
+                                                                        <input name="eventName" type="text" class="form-control"
+                                                                            id="inputNameNewEvent" placeholder="Nombre">
+                                                                    </div>
+                                                                    <button type="submit" class="btn btn-primary">EDITAR
+                                                                    </button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <form action="/event/delete/{{idEvent}}">
+                                                <button type="submit" title="Remove" class="btn btn-danger btn-link btn-sm">
+                                                    <i class="material-icons">delete</i>
+                                                </button>
+                                            </form>
+                                            <!--<button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
                                                 <i class="material-icons">delete</i> </button>-->
-                                    </td>
-                                    {{/admin}}
-                                </tr>
-                                {{/eventos}}
+                                        </td>
+                                        {{/admin}}
+                                    </tr>
+                                    {{/eventos}}
                                 </tbody>
                             </table>
                         </div>
@@ -113,8 +109,7 @@
                         <div class="col-md-4"></div>
                         {{#showmoreevent}}
                         <div class="col-md-4">
-                            <button onclick="location.href='/?eventpage={{nextEventPage}}';"
-                                    class="btn btn-primary btn-link mostrarmas">Mostrar
+                            <button onclick="location.href='/?eventpage={{nextEventPage}}';" class="btn btn-primary btn-link mostrarmas">Mostrar
                                 más
                             </button>
                         </div>
@@ -123,8 +118,7 @@
                     </div>
                     <br>
                     {{#admin}}
-                    <button class="btn btn-primary btn-fab btn-fab btn-round" data-toggle="modal"
-                            data-target="#newEventModal">
+                    <button class="btn btn-primary btn-fab btn-fab btn-round" data-toggle="modal" data-target="#newEventModal">
                         <i class="material-icons">add</i>
                     </button>
                     {{/admin}}
@@ -137,9 +131,8 @@
 
 <!--Popup newEvent-->
 {{#admin}}
-<div class="modal fade bd-example-modal-lg" id="newEventModal" tabindex="-1" role="dialog"
-     aria-labelledby="myLargeModalLabel"
-     aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" id="newEventModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="card card-signup card-plain">
@@ -155,21 +148,19 @@
                             <div class="col-md-9">
                                 <div class="form-group col-md-12">
                                     <input type="text" class="form-control" value="" name="name" id="inputNameNewEvent"
-                                           placeholder="Nombre">
+                                        placeholder="Nombre">
                                 </div>
                                 <div class="form-group col-md-12">
                                     <input type="text" class="form-control datetimepicker" name="eventDate" value=""
-                                           placeholder="Fecha">
+                                        placeholder="Fecha">
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <input type="text" class="form-control" value="" name="eventPhoto"
-                                           id="inputURLPhotoNewEvent"
-                                           placeholder="URL Foto">
+                                    <input type="text" class="form-control" value="" name="eventPhoto" id="inputURLPhotoNewEvent"
+                                        placeholder="URL Foto">
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <input type="text" class="form-control" value="" name="eventWiki"
-                                           id="inputURLWikiNewEvent"
-                                           placeholder="URL Wiki">
+                                    <input type="text" class="form-control" value="" name="eventWiki" id="inputURLWikiNewEvent"
+                                        placeholder="URL Wiki">
                                 </div>
                             </div>
                             <!--Subida de imagenes de los eventos-->
@@ -177,49 +168,37 @@
                             <div class="col-md-3">
                                 <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                                     <div class="fileinput-new thumbnail img-raised">
-                                        <img src="" style="width: 100%" alt="...">
+                                        <img id="image_preview" src="/img/insert_image.png" style="width: 100%" alt="...">
                                     </div>
-                                    <div class="fileinput-preview fileinput-exists thumbnail
-                                               img-raised"></div>
-                                    <div>
-                                        <span class="btn btn-raised btn-round btn-default btn-file">
-                                            <span class="fileinput-new" style="width: 50%">Seleccionar imagen</span>
-                                            <span class="fileinput-exists" style="width: 50%">Cambiar</span>
-                                            <input type="file" name="file"/>
-                                        </span>
-                                        <a class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i
-                                                class="fa fa-times"></i>
-                                            Remove</a>
+
+                                    <div id="div_file">
+                                        <p id="text_file">Add Image</p>
+                                        <input type="file" name="file" id="imagen_enviar" onchange="document.getElementById('image_preview').src = window.URL.createObjectURL(this.files[0])" />
                                     </div>
                                 </div>
                             </div>
-
-                            <!--Fin de la subida de imagenes de los eventos-->
                         </div>
-                        <button class="btn btn-primary" type="button" data-toggle="collapse"
-                                data-target="#collapseCategory"
-                                aria-expanded="false" aria-controls="collapseCategory"
-                                style="opacity: 0.8; margin: auto">Relación
-                            con
-                            Categorías
-                        </button>
 
-                        <div class="collapse" id="collapseCategory">
-                            <div class="form-check text-center">
-                                {{#categoryList}}
-                                <input type="checkbox" id="selectedCategoriesCheckbox" name="categories"
-                                       value="{{name}}">{{name}}<br>
-                                {{/categoryList}}
-                                <input type="hidden" name="selectedCategories" id="selectedCategories">
-                            </div>
-                        </div>
-                        <br>
-                        <button type="submit" class="btn btn-primary">ACEPTAR</button>
-                        <input type="hidden" name="_csrf" value="{{token}}"/>
-                    </form>
+                        <!--Fin de la subida de imagenes de los eventos-->
                 </div>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseCategory"  aria-expanded="false" aria-controls="collapseCategory" style="opacity: 0.8; margin: auto">Relación  con Categorías
+                </button>
+
+                <div class="collapse" id="collapseCategory">
+                    <div class="form-check text-center">
+                        {{#categoryList}}
+                        <input type="checkbox" id="selectedCategoriesCheckbox" name="categories" value="{{name}}">{{name}}<br>
+                        {{/categoryList}}
+                        <input type="hidden" name="selectedCategories" id="selectedCategories">
+                    </div>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">ACEPTAR</button>
+                <input type="hidden" name="_csrf" value="{{token}}" />
+                </form>
             </div>
         </div>
     </div>
+</div>
 </div>
 {{/admin}}

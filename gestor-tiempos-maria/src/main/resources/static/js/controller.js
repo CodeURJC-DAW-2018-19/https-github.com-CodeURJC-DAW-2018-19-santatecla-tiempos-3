@@ -1,32 +1,30 @@
 const URL = "https://localhost:8443";
-$(document).ready(function () {
-    
-    function pruebaPOST(){
-      
-    }
+$(document).ready(function (e) {
 
-    
+
+
+
     /////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////--------CREATE CATEGORY-----------////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////
-    
-   /*$("#createCategory").submit(function (event) {
-        //get the form data
-     var formData = {
-            "name": $("input[name='categoryName']").val()
-        }
-        $.ajax({
-            type: 'POST',
-            url: URL + "/api/categories/prueba",
-            //data:JSON.stringify(formData.name),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).done(function(data){
-            console.log("EXITO, estamos en el done de AJAX");
-            //console.log (data);
-        });
-    });*/
+
+    /*$("#createCategory").submit(function (event) {
+         //get the form data
+      var formData = {
+             "name": $("input[name='categoryName']").val()
+         }
+         $.ajax({
+             type: 'POST',
+             url: URL + "/api/categories/prueba",
+             //data:JSON.stringify(formData.name),
+             headers: {
+                 "Content-Type": "application/json"
+             }
+         }).done(function(data){
+             console.log("EXITO, estamos en el done de AJAX");
+             //console.log (data);
+         });
+     });*/
 
     /////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////----------SET CATEGORY------------////////////////////////////////
@@ -34,19 +32,19 @@ $(document).ready(function () {
     $("#pruebaPOST").click(function () {
         console.log("Estamos dentro de prueba POST");
         var categoryName = document.getElementById("inputNameNewCategory").value;
-        console.log (categoryName);
+        console.log(categoryName);
         var token = document.getElementById("tokenValue").value;
         console.log(token);
         $.ajax({
             type: 'POST',
             url: URL + "/category/create",
             //data:JSON.stringify(categoryName),
-            formdata:{
-                
+            formdata: {
+
             }
-            
-         
-        }).done(function(data){
+
+
+        }).done(function (data) {
             console.log("EXITO, estamos en el done de AJAX");
             //console.log (data);
         });
@@ -150,24 +148,24 @@ function loginindex(data) {
     }
 }
 function goTo(route) {
-    console.log ("Ha entrado en route");
-        //Hide all sections and show the section selected
-        document.getElementById("event").style.display = "none";
-        document.getElementById("time").style.display = "none";
-        document.getElementById("category").style.display = "none";
-        document.getElementById("view").style.display = "none";
-        document.getElementById(route).style.display = "block";
+    console.log("Ha entrado en route");
+    //Hide all sections and show the section selected
+    document.getElementById("event").style.display = "none";
+    document.getElementById("time").style.display = "none";
+    document.getElementById("category").style.display = "none";
+    document.getElementById("view").style.display = "none";
+    document.getElementById(route).style.display = "block";
 
-        //Change css of sidebar (active class)
-        var x = document.getElementById("nav_category").className ; 
-        console.log(x);
-        document.getElementById("nav_category").className = "nav-item";
-        
-        document.getElementById("nav_time").className = "nav-item";
-        document.getElementById("nav_event").className = "nav-item";
-        //document.getElementById("nav_view").className = "nav_item";
-        document.getElementById("nav_" + route).className = "nav-item active";
-    }
+    //Change css of sidebar (active class)
+    var x = document.getElementById("nav_category").className;
+    console.log(x);
+    document.getElementById("nav_category").className = "nav-item";
+
+    document.getElementById("nav_time").className = "nav-item";
+    document.getElementById("nav_event").className = "nav-item";
+    //document.getElementById("nav_view").className = "nav_item";
+    document.getElementById("nav_" + route).className = "nav-item active";
+}
 /*
 document.getElementById('actualidad').onchange = function () {
     document.getElementById('dateDisabled').disabled = this.checked;

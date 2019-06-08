@@ -22,6 +22,8 @@
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600|Open+Sans" rel="stylesheet">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+
+	
 </head>
 
 <body class="" background="img/bg.jpg">
@@ -65,7 +67,7 @@
 							<li class="nav-item dropdown">
 								<button class="btn btn-round" data-toggle="modal" data-target="#loginModal">
 									{{^logged}} Iniciar Sesión {{/logged}}
-									 {{#logged}} {{username}} {{/logged}} <i class="material-icons">assignment</i>
+									{{#logged}} {{username}} {{/logged}} <i class="material-icons">assignment</i>
 								</button>
 							</li>
 						</ul>
@@ -85,14 +87,14 @@
 										<i class="material-icons">clear</i>
 									</button>
 									<h4 class="card-title">
-										{{^logged}} Iniciar Sesión {{/logged}} 
+										{{^logged}} Iniciar Sesión {{/logged}}
 										{{#logged}}Perfil{{/logged}}
 									</h4>
 								</div>
 							</div>
 							{{^logged}}
 							<div class="modal-body">
-								<form method="post" action="/login" method ="post">
+								<form method="post" action="/login" method="post">
 									<div class="card-body">
 										<div class="form-group bmd-form-group">
 											<div class="input-group">
@@ -115,7 +117,7 @@
 												 required />
 											</div>
 										</div>
-										<input id="inputSubmit" class="btn btn-primary btn-block" type="submit" value="Iniciar Sesión" /> 
+										<input id="inputSubmit" class="btn btn-primary btn-block" type="submit" value="Iniciar Sesión" />
 										<input type="hidden" name="_csrf" value="{{token}}" />
 									</div>
 								</form>
@@ -123,12 +125,12 @@
 									<a onclick="registerview('loginModalContent2')" href="#" class="btn btn-primary btn-link btn-wd btn-lg">Registrarse</a>
 								</div>
 							</div>
-							{{/logged}} 
+							{{/logged}}
 							{{#logged}}
 							<div class="modal-body">
 								<p>{{username}}</p>
 								<form method="post" action="/logout">
-									<input id="inputSubmit" class="btn btn-primary btn-block" type="submit" value="Cerrar Sesión" /> 
+									<input id="inputSubmit" class="btn btn-primary btn-block" type="submit" value="Cerrar Sesión" />
 									<input type="hidden" name="_csrf" value="{{token}}" />
 								</form>
 							</div>

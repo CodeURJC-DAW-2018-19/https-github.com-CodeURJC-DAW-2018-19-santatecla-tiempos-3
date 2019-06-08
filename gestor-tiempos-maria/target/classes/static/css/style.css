@@ -1,3 +1,30 @@
+div#div_file{
+    padding: 10px;
+    background-color: grey;
+    margin: 15px;
+    height: 40px;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -o-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+}
+p#text_file{
+    text-align: center;
+    color: white;
+}
+input#imagen_enviar{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+
 .periodIndex{
     width: 5% !important;
 }
