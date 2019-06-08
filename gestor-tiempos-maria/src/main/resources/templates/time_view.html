@@ -28,12 +28,13 @@
                                 <tbody>
                                 {{#intervalos}}
                                 <tr>
-                                    {{#logged}}
+
                                     <td style="width: 5% !important">{{-index}}</td>
+                                    {{#logged}}
                                     <td style="width: 30% !important">
                                         <form id="myForm" action="/openintervaltab{{idInterval}}">
-                                            <a href='#' onclick='this.parentNode.submit(); return false;'>{{name}}</a>
-
+                                            <a href='#'
+                                               onclick='this.parentNode.submit(); return false;'>{{name}}</a>
                                         </form>
                                     </td>
                                     <!--Popup SHOW Time-->
@@ -58,9 +59,10 @@
                                     {{/logged}}
                                     {{^logged}}
                                     <td style="width: 35% !important">{{name}}</td>
+                                    {{/logged}}
                                     <td style="width: 25% !important">{{start}}</td>
                                     <td style="width: 25% !important">{{end}}</td>
-                                    {{/logged}}
+
                                     {{#admin}}
                                     <td class="td-actions text-right periodButtons">
                                         <button type="button" rel="tooltip" title="Edit Task"
@@ -136,8 +138,7 @@
                                                     class="btn btn-danger btn-link btn-sm">
                                                 <i class="material-icons">delete</i>
                                             </button>
-                                        </form> <!--<button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                                                    <i class="material-icons">delete</i> </button>-->
+                                        </form>
                                     </td>
                                     {{/admin}}
                                 </tr>
@@ -150,9 +151,8 @@
                         <div class="col-md-4"></div>
                         {{#showmoreinterval}}
                         <div class="col-md-4">
-                            <button
-                                    onclick="location.href='/?intervalpage={{nextIntervalPage}}';"
-                                    class="btn btn-primary btn-link mostrarmas">Mostrar
+                            <button class="btn btn-primary btn-link mostrarmas"
+                                    onclick="location.href='/?intervalpage={{nextIntervalPage}}';">Mostrar
                                 más
                             </button>
                         </div>
