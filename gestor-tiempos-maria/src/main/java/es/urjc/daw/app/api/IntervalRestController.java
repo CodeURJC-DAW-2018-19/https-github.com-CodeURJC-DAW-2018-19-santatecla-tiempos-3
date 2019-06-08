@@ -1,17 +1,18 @@
 package es.urjc.daw.app.api;
 
-import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import es.urjc.daw.app.interval.Interval;
+import java.util.List;
 import es.urjc.daw.app.interval.Interval;
 import es.urjc.daw.app.interval.IntervalService;
 
@@ -21,41 +22,40 @@ public class IntervalRestController {
 	@Autowired private IntervalService service;
 	//Peta porque hace una recursión infinita
 	@GetMapping("/")
-	public Collection <Interval> getIntervals() {
-		Collection <Interval> intervalos = service.findAll();
+	public List <Interval> getIntervals() {
+		List <Interval> intervalos = service.findAll();
 		System.out.println (intervalos);
 		return intervalos;
 	}
 	
-	@GetMapping("/getInterval/{id}")
+	@GetMapping("/get/{id}")
 	public Interval getIntervalById(@PathVariable long id) {
 		return service.findOne(id);
 	}
 	
-	@GetMapping("/getInterval")
+	@GetMapping("/get")
 	public Interval getIntervalByName(@RequestParam String name) {
 		return service.findOneByName(name);
 	}
-	///////////////////////////////////////////////////
-	public String createNewInterval(@PathVariable long id, @RequestParam String name,@RequestParam String startdate,@RequestParam String enddate) {
+
+	@PostMapping("/create")
+	@ResponseStatus(HttpStatus.CREATED)
+	public void createNewInterval(@PathVariable long id, @RequestParam String name,@RequestParam String startdate,@RequestParam String enddate) {
 		Interval newInterval = new Interval(name,startdate,enddate);
-		
 		service.save(newInterval);
-		return "redirect:/";
 	}
 		
-	@PostMapping("/interval/set/{id}")
-	public String setIntervalById(@PathVariable long id, @RequestParam String name,@RequestParam String startdate,@RequestParam String enddate) {
+	@PostMapping("/set/{id}")
+	@ResponseStatus(HttpStatus.CREATED)
+	public void setIntervalById(@PathVariable long id, @RequestParam String name,@RequestParam String startdate,@RequestParam String enddate) {
 		Interval interval = new Interval(name,startdate,enddate);
 	       interval.setIdInterval(id);
 	       service.save(interval);
-	       return "redirect:/";
 	}
 
-	@DeleteMapping("/interval/delete/{id}")
-	public String deleteIntervalById(@PathVariable long id){
+	@DeleteMapping("/delete/{id}")
+	public void deleteIntervalById(@PathVariable long id){
 		service.delete(id);
-		return "redirect:/";
 	}
 	
 }

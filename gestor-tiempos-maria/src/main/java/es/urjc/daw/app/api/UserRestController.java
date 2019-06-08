@@ -24,36 +24,20 @@ public class UserRestController {
 		return service.findAll();
 	}
 	
-	@GetMapping("/getUser/{id}")
+	@GetMapping("/get/{id}")
 	public User getUserById(@PathVariable long id) {
 		return service.findOneById(id);
 	}
 	
-	@GetMapping("/getUser")
+	@GetMapping("/get")
 	public User getUserByName(@RequestParam String name) {
 		return service.findOne(name);
 	}
 	
 	//Aqui en el postman hay que meterle bien la forma de crear el user
-	@PostMapping("/")
+	@PostMapping("/create")
 	@ResponseStatus(HttpStatus.CREATED)
-	public User createBook(@RequestBody User user) {
-		System.out.println("*********Ha entrado");
+	public void createUser(@RequestBody User user) {
 		service.save(user);
-		return user;
 	}
-	
-	@PostMapping("/prueba")
-	@ResponseStatus(HttpStatus.CREATED)
-	public String prueba(@RequestBody String prueba) {
-		System.out.println("*********Ha entrado");
-		return prueba;
-	}
-	
-	//Por implementar: deleteUser
-	
-	//Por implementar: updateUser (buscamos por email, por nombre ???)
-	
-	
-	
 }

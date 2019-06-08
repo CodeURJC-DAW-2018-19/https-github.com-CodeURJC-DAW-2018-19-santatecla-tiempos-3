@@ -3,15 +3,10 @@ package es.urjc.daw.app.interval;
 
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
 
-/**
- * The persistent class for the category database table.
- *
- */
 @Entity
 @Table(name="intervals")
 @NamedQuery(name="Interval.findAll", query="SELECT i FROM Interval i")
@@ -21,14 +16,7 @@ public class Interval{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long idInterval;
 
-	
-/*	@ElementCollection(fetch = FetchType.EAGER)
-	private List<String> roles;
-
 	@Column(unique=true)
-*/
-	@Column(unique=true)
-	
 	private String name;
 	private String startdate;
 	private String enddate;
