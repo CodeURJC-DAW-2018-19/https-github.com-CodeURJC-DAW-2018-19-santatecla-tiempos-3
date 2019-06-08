@@ -36,6 +36,9 @@ public class CategoryRestController {
 	public Category getCategoryByName(@RequestParam String name) {
 		return service.findOneByName(name);
 	}
+   
+
+	
 
 	@PostMapping("/create")
 	@ResponseStatus(HttpStatus.CREATED)
