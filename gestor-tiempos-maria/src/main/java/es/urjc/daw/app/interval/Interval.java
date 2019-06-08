@@ -3,9 +3,14 @@ package es.urjc.daw.app.interval;
 
 
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Set;
 
 import javax.persistence.*;
+
+import org.hibernate.mapping.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="intervals")
@@ -24,11 +29,11 @@ public class Interval{
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name="parent_id")
+	@JsonIgnore
 	private Interval parent;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "parent")
 	private Set<Interval> childrens = new HashSet<Interval>();
-	
 	
 	public Interval() {
 	}

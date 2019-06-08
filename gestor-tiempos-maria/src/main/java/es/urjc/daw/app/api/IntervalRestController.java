@@ -25,6 +25,7 @@ public class IntervalRestController {
 	public List <Interval> getIntervals() {
 		List <Interval> intervalos = service.findAll();
 		System.out.println (intervalos);
+		System.out.println ("!!!!");
 		return intervalos;
 	}
 	

@@ -102,7 +102,7 @@ public class DataBaseLoader {
         };
         for(int i=0;i<intervals.length;i++){
         	if (intervalRepository.findByName(intervals[i].getName())==null)
-                intervals[i].setParent(padre1);
+                //intervals[i].setParent(padre1);
         		//padre1.addChild(intervals[i]);
         		intervalRepository.save(intervals[i]);
         }
@@ -121,8 +121,11 @@ public class DataBaseLoader {
         for(int i=0;i<intervals2.length;i++){
         	if (intervalRepository.findByName(intervals2[i].getName())==null)
                 intervals2[i].setParent(padre2);
-        		//padre1.addChild(intervals[i]);
-        		intervalRepository.save(intervals2[i]);
+        	//	padre2.addChild(intervals[i]);
+        		//intervals2[i].addChild(padre1);
+    		//intervals2[i].addChild(padre2);
+
+        	intervalRepository.save(intervals2[i]);
         }
     }
 }

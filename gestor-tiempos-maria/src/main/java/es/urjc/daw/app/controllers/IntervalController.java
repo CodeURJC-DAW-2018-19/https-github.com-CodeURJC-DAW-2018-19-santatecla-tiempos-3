@@ -20,7 +20,7 @@ public class IntervalController {
 		Interval newInterval = new Interval(intervalName, startdate, enddate);
         if (parentId!=-1) {
     	Interval padre = intervalService.findByIdInterval(parentId);
-    	newInterval.setParent(padre);
+    	//newInterval.setParent(padre);
     	}
         intervalService.save(newInterval);
 		webcontroller.addUserToModel(model);
@@ -38,7 +38,7 @@ public class IntervalController {
         newInterval.setIdInterval(idInterval);
         if (parentId!=-1) { 
         	Interval padre = intervalService.findByIdInterval(parentId);
-        	newInterval.setParent(padre);
+        	//newInterval.setParent(padre);
     	} 
 		intervalService.save(newInterval);
 		webcontroller.addUserToModel(model);
