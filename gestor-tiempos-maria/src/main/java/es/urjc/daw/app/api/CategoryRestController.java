@@ -1,6 +1,9 @@
 package es.urjc.daw.app.api;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import es.urjc.daw.app.category.Category;
 import es.urjc.daw.app.category.CategoryService;
+import es.urjc.daw.app.event.Event;
 import es.urjc.daw.app.interval.Interval;
 
 @RestController
@@ -40,6 +44,20 @@ public class CategoryRestController {
 
 	
 
+	@GetMapping("/events/{id}")
+	@ResponseStatus(HttpStatus.OK)
+	public String[] getEvents(@PathVariable long id) {
+		Category category = service.findOne(id);
+		String[] names = new String[category.getEvents().size()];
+		
+		
+		List<Event> mainList = new ArrayList<Event>();
+		mainList.addAll(category.getEvents());
+		for(int i=0;i<names.length;i++)
+			names[i]=mainList.get(i).getName();
+		
+		return names;
+	}
 	@PostMapping("/create")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void createNewCategory(@RequestParam String name) {

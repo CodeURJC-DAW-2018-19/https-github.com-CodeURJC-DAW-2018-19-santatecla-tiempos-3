@@ -1,6 +1,12 @@
 package es.urjc.daw.app.event;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import es.urjc.daw.app.category.Category;
+import es.urjc.daw.app.interval.Interval;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,9 +34,14 @@ public class Event
    // private Date eventDate;
     private String eventDate;
 
-    @OneToMany
-    private List<Event> events = new ArrayList<>();
-
+   
+    
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name="category_id")
+	@JsonIgnore
+	private Category category;
+    
+    
     public Event(String name) {
         setName(name);
     }
@@ -40,14 +51,16 @@ public class Event
         setEventWiki(eventWiki);
         setEventDate(eventDate);
     }
-
-    public List<Event> getEvents() {
-        return this.events;
-    }
-
-    public void setEvent(List<Event> events) {
-        this.events = events;
-    }
+    
+    public Category getCategory() {
+		return category;
+	}
+	
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	
+    
 
     public String  getEventDate() {
         return eventDate;

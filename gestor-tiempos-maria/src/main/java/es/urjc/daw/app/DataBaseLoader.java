@@ -66,10 +66,7 @@ public class DataBaseLoader {
                 new Category("Categoria23"),
                 new Category("Categoria24")
         };
-        for(int i=0;i<categories.length;i++){
-        	if (categoryRepository.findByName(categories[i].getName())==null)
-        		categoryRepository.save(categories[i]);
-        }
+        
         //INICIALIZACIÓN DE EVENTOS
         Event [] events = {new Event("Evento 1","Wiki 1", "Date 1"),
         		new Event("Evento 2","Wiki 2", "Date 2"),
@@ -85,10 +82,17 @@ public class DataBaseLoader {
         		new Event("Evento 12","Wiki 7", "Date 7"),
         		new Event("Evento 13","Wiki 7", "Date 7")
         };
+        events[0].setCategory(categories[0]);
+        events[1].setCategory(categories[0]);
+        for(int i=0;i<categories.length;i++){
+        	if (categoryRepository.findByName(categories[i].getName())==null)
+        		categoryRepository.save(categories[i]);
+        }
         for(int i=0;i<events.length;i++){
         	if (eventRepository.findByName(events[i].getName())==null)
         		eventRepository.save(events[i]);
         }
+        
         //INICIALIZACIÓN DE INTERVALOS
         Interval padre1 = new Interval("Intervalo Padre 1","01/01/1989","01/01/1996");
         intervalRepository.save(padre1);
