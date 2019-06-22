@@ -5,7 +5,7 @@
                 <div class="card-header card-header-tabs card-header-primary">
                     <div class="nav-tabs-navigation">
                         <div class="nav-tabs-wrapper">
-                            <span class="nav-tabs-title">CATEGORÍAS</span>
+                            <span class="nav-tabs-title">CATEGORÝAS</span>
                         </div>
                     </div>
                 </div>
@@ -37,13 +37,10 @@
                                                         <div class="modal-header">
                                                             <h5 class="modal-title card-title">Show
                                                                 category: {{name}} </h5>
-                                                            <div>
+                                                            <div>{{#events}}
                                                                 <ul>
-                                                                    <li>Evento 1</li>
-                                                                    <li>Evento 2</li>
-                                                                    <li>Evento 3</li>
-                                                                    <li>Evento 4</li>
-                                                                </ul>
+                                                                    <li>{{name}}</li>
+                                                                </ul>{{/events}}
                                                             </Div>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
