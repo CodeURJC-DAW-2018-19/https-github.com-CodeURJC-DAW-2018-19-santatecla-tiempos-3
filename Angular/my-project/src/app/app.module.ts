@@ -102,12 +102,10 @@ import { CovalentTooltipEchartsModule } from '@covalent/echarts/tooltip';
 
 
 import { CategoryComponent } from "./pages/category/category.component";
-//import { CategoryService } from './pages/category/category.service';
+import { EventComponent } from "./pages/event/event.component";
+import { IntervalComponent } from "./pages/interval/interval.component";
 
-//Our Services 
-/*import { WorkService } from './pages/literaryWork/work.service';
-import { AuthorService } from './pages/author/author.service';
-import { ThemeService } from './pages/theme/theme.service'; */
+
 //
 @NgModule({
     imports: [
@@ -166,7 +164,7 @@ import { ThemeService } from './pages/theme/theme.service'; */
         NgxChartsModule,
         routing,
     ],
-    declarations: [AppComponent, CategoryComponent],
+    declarations: [AppComponent, CategoryComponent,EventComponent,IntervalComponent],
       
                     /* WorkComponent,IndxComponent, AuthorNewComponent, AuthorComponent, ThemeComponent, ThemeNewComponent, WorkComponent, WorkShowComponent */
 

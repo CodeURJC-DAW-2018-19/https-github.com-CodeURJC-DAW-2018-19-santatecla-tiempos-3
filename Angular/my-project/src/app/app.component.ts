@@ -30,6 +30,16 @@ export class AppComponent implements AfterViewInit {
                 this._domSanitizer.bypassSecurityTrustResourceUrl
             ('https://raw.githubusercontent.com/Teradata/covalent-quickstart/develop/src/assets/icons/covalent.svg'));
     } 
+
+    changeView(view){
+      document.getElementById("category_view").style.display = "none";
+      document.getElementById("event_view").style.display = "none";
+      document.getElementById("interval_view").style.display = "none";
+      document.getElementById(view+"_view").style.display = "block";
+    }
+
+
+
     ngAfterViewInit(): void {
       // broadcast to all listener observables when loading the page
       this.media.broadcast();
@@ -41,5 +51,6 @@ export class AppComponent implements AfterViewInit {
       this.dialog.open(this.template, this.config);
     }
   
+    
 
 }

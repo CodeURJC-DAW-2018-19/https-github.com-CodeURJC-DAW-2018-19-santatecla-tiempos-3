@@ -1,8 +1,4 @@
-import { Component, OnInit} from '@angular/core';
-import { Category, CategoryService } from './category.service';
-import { Router } from '@angular/router';
-import { TdDialogService } from '@covalent/core';
-import { LoginService } from 'src/app/auth/login.service';
+import { Component} from '@angular/core';
 
 @Component({
     selector: 'category-view',
@@ -11,14 +7,5 @@ import { LoginService } from 'src/app/auth/login.service';
 })
 
 export class CategoryComponent{
-/* 
-    constructor(private router: Router, private service: CategoryService,private _dialogService: TdDialogService,
-        public loginService: LoginService) { }
-    
-      ngOnInit() {
-       this.service.getAuthorsPageable(0).subscribe(
-          authors => this.authors = authors,
-          error => console.log(error)
-        );
-      }*/
+
 }

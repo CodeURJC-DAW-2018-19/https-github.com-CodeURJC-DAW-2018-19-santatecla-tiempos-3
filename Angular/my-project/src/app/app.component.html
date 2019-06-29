@@ -39,15 +39,15 @@
             <div td-sidenav-content layout="column" layout-fill>
 
                 <mat-nav-list flex [tdLayoutManageListClose]="!media.query('gt-sm')">
-                    <a mat-list-item>
+                    <a mat-list-item (click)="changeView('category')">
                         <mat-icon matListIcon matTooltipPosition="after">dashboard</mat-icon>
                         <span>Categorías</span>
                     </a>
-                    <a mat-list-item>
+                    <a mat-list-item (click)="changeView('event')">
                         <mat-icon matListIcon matTooltipPosition="after">dashboard</mat-icon>
                         <span>Eventos</span>
                     </a>
-                    <a mat-list-item>
+                    <a mat-list-item (click)="changeView('interval')">
                         <mat-icon matListIcon matTooltipPosition="after">dashboard</mat-icon>
                         <span>Intervalos</span>
                     </a>
@@ -64,7 +64,11 @@
             <!--CONTAINER-->
             <mat-drawer-container>
                 CONTENEDOR
-        <category-view></category-view>
+                <div id="contenido">
+                    <category-view id ="category_view" style="display:none"></category-view>
+                    <event-view id ="event_view" style="display:none"></event-view>
+                    <interval-view id ="interval_view" style="display:none"></interval-view>
+                </div>
          <!-- <mat-grid-list cols="1" rowHeight="20:1">
                   <mat-grid-tile>1</mat-grid-tile>
                   <mat-grid-tile>2</mat-grid-tile>
