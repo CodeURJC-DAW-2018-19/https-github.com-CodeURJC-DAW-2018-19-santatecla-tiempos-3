@@ -17,8 +17,7 @@ export interface DialogData {
 
 export class CategoryComponent {
     constructor(public dialog: MatDialog, private service: CategoryService) { }
-    headers = ["#", "Nombre"]
-    elements = [
+   elements = [
         { i: 1, name: 'Categoría 1' },
         { i: 2, name: 'Categoría 2' },
         { i: 3, name: 'Categoría 3' },
@@ -32,15 +31,10 @@ export class CategoryComponent {
     ];
 
     prueba(){
+        
         this.service.getCategories().subscribe(
             result => {
-                if(result.code != 200){
-                    console.log(result);
-                }else{
-                    console.log("BIEN HECHO");
-                    console.log (result.data)
-                }
-
+                console.log (result);
             },
             error => {
                 console.log(<any>error);

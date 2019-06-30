@@ -7,6 +7,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 @Configuration
 @Order(1)
@@ -60,5 +61,8 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		// Database authentication provider
 		auth.authenticationProvider(userRepoAuthProvider);
+	}
+	public void addCorsMappings(CorsRegistry registry) {
+		registry.addMapping("/**");
 	}
 }

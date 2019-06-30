@@ -13,12 +13,17 @@ export interface DialogData {
 })
 export class LoginComponent {
   constructor(public dialog: MatDialog, public router: Router, public loginService: LoginService) { }
-  email: string;
-  password: string;
+  loginDialogFormat={
+    email:String,
+    password: String
+  }
+  nameLogged :string; 
+ // email: string;
+ // password: string;
   openLoginDialog(): void {
     const dialogRef = this.dialog.open(DialogLoginComponent, {
       width: '250px',
-      data: { email: this.email, password: this.password }
+      data: { email: this.loginDialogFormat.email, password: this.loginDialogFormat.password }
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
@@ -30,7 +35,7 @@ export class LoginComponent {
     this.loginService.logIn(email, password).subscribe(
       (response) => {
         console.log(response);
-        //this.dialogRef.close();
+        this.nameLogged = response.name; 
       },
       (error) => alert('Invalid user or password'),
     );
