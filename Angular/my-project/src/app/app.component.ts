@@ -50,7 +50,8 @@ export class AppComponent implements AfterViewInit {
     openTemplate() {
       this.dialog.open(this.template, this.config);
     }
-  
+   
+  }
     
 
-}
+

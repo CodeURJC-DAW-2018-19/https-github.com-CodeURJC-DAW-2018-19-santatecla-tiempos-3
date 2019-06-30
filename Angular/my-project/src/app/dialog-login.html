@@ -1,0 +1,23 @@
+<!--EL USUARIO NO ESTÁ LOGEADO-->
+<h1 *ngIf ="!loginService.isLogged" mat-dialog-title>Iniciar Sesión</h1>
+<div *ngIf ="!loginService.isLogged" mat-dialog-content>
+    <div class="example-container">
+        <mat-form-field>
+            <input matInput placeholder="Email..."  [(ngModel)]="data.email">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput type="password" placeholder="Password..." [(ngModel)]="data.password">
+        </mat-form-field>
+        <br>
+        <button [mat-dialog-close]="data" mat-button>Iniciar Sesión</button>
+        <mat-divider></mat-divider>
+        <br><br>
+        <button (click)="registrarse()" mat-button>Registrarse</button>
+    </div>
+</div>
+<!--EL USUARIO SI ESTÁ LOGEADO-->
+<h1 *ngIf ="loginService.isLogged" mat-dialog-title>HAS INICIADO SESIÓN</h1>
+
+
+

@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { CategoryService } from './category.service';
 
 export interface DialogData {
     name: string;
@@ -15,6 +16,7 @@ export interface DialogData {
 
 
 export class CategoryComponent {
+    constructor(public dialog: MatDialog, private service: CategoryService) { }
     headers = ["#", "Nombre"]
     elements = [
         { i: 1, name: 'Categoría 1' },
@@ -29,8 +31,24 @@ export class CategoryComponent {
         { i: 10, name: 'Categoría 10' },
     ];
 
+    prueba(){
+        this.service.getCategories().subscribe(
+            result => {
+                if(result.code != 200){
+                    console.log(result);
+                }else{
+                    console.log("BIEN HECHO");
+                    console.log (result.data)
+                }
+
+            },
+            error => {
+                console.log(<any>error);
+            }
+  
+        )
+    }
     name: string;
-    constructor(public dialog: MatDialog) { }
     openDialog(): void {
         this.dialog.open(DialogAddCategory, {
 

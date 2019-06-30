@@ -3,11 +3,8 @@
 
     <td-layout-nav [toolbarTitle]="(media.registerQuery('gt-xs') | async) ? 'Gestor de Tiempos' : ''" navigationRoute="/">
 
-        <div td-toolbar-content layout="row" layout-align="start center" flex>
-            <span flex *ngIf="!searchBox.searchVisible"></span>
-            <td-search-box hide-xs flex #searchBox [ngClass]="{'push-left push-right mat-whiteframe-z1 bgc-white tc-black': searchBox.searchVisible }"
-                placeholder="search"></td-search-box>
-
+        <div td-toolbar-content layout="row" layout-align="start right" flex>
+            <login></login>
             <!--AQUI VA EL LOGIN-->
         </div>
         <td-layout-manage-list #manageList [opened]="media.registerQuery('gt-sm') | async" [mode]="(media.registerQuery('gt-sm') | async) ? 'side' :  'over'"

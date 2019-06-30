@@ -99,6 +99,7 @@ import { CovalentBaseEchartsModule } from '@covalent/echarts/base';
 import { CovalentBarEchartsModule } from '@covalent/echarts/bar';
 import { CovalentTooltipEchartsModule } from '@covalent/echarts/tooltip';
 
+import { LoginComponent } from "./login.component";
 
 
 import { CategoryComponent } from "./pages/category/category.component";
@@ -108,8 +109,12 @@ import { IntervalComponent } from "./pages/interval/interval.component";
 import { DialogAddCategory } from "./pages/category/category.component";
 import { DialogAddEvent } from "./pages/event/event.component";
 import { DialogAddInterval } from "./pages/interval/interval.component";
+import { DialogLoginComponent } from "./login.component";
 
 
+import { CategoryService } from "./pages/category/category.service";
+import { EventService } from "./pages/event/event.service";
+import { IntervalService } from "./pages/interval/interval.service";
 //
 @NgModule({
     imports: [
@@ -169,7 +174,7 @@ import { DialogAddInterval } from "./pages/interval/interval.component";
         routing,
     ],
     declarations: [AppComponent, CategoryComponent,EventComponent,IntervalComponent,
-        DialogAddCategory,DialogAddEvent,DialogAddInterval],
+        DialogAddCategory,DialogAddEvent,DialogAddInterval, LoginComponent,DialogLoginComponent],
       
                     /* WorkComponent,IndxComponent, AuthorNewComponent, AuthorComponent, ThemeComponent, ThemeNewComponent, WorkComponent, WorkShowComponent */
 
@@ -177,12 +182,12 @@ import { DialogAddInterval } from "./pages/interval/interval.component";
     bootstrap: [AppComponent],
  
 
-    providers: [ LoginService,
+    providers: [ LoginService,CategoryService,EventService,IntervalService,
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         { provide: LocationStrategy, useClass: HashLocationStrategy }
     ],
-    entryComponents: [DialogAddCategory,DialogAddEvent,DialogAddInterval],
+    entryComponents: [DialogAddCategory,DialogAddEvent,DialogAddInterval,DialogLoginComponent],
 
     exports: [
     A11yModule,

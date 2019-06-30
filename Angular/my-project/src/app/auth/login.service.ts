@@ -46,7 +46,6 @@ export class LoginService {
             }));
     }
     logOut() {
-
         return this.http.get(URL + '/logOut').pipe(
             map(response => {
                 this.removeCurrentUser();
