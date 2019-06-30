@@ -24,10 +24,10 @@ EXPOSE 8443
 
  # The application's jar file. JAR_FILE defines a variable with a
 	#default value
-ARG JAR_FILE=./target/practica_fase4-0.1.0.jar
+ARG JAR_FILE=./target/practica_fase4.jar
 
  # Add the application's jar to the container
-ADD ${JAR_FILE} practica_fase4-0.1.0.jar
+ADD ${JAR_FILE} practica_fase4.jar
 
  # Run the jar file
-ENTRYPOINT ["java","-jar","/practica_fase4-0.1.0.jar"]
+ENTRYPOINT ["java","-jar","/practica_fase4.jar"]
