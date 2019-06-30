@@ -1,5 +1,11 @@
-import { Component} from '@angular/core';
-
+import { Component, Inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+export interface DialogData {
+    name: string;
+}
+/**
+ * EVENT VIEW
+ */
 @Component({
     selector: 'event-view',
     templateUrl: './event.component.html',
@@ -20,4 +26,21 @@ export class EventComponent{
         { i: 9, name: 'Evento 9' },
         { i: 10, name: 'Evento 10' },
     ];
+    name: string;
+    constructor(public dialog: MatDialog) { }
+    openDialog(): void {
+        this.dialog.open(DialogAddEvent, {
+
+        });
+    }
 }
+/**
+ * DIALOG ADD EVENT
+ */
+@Component({
+    selector: 'dialog-add-event',
+    templateUrl: 'dialog-add-event.html',
+})
+export class DialogAddEvent {
+    constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+}   

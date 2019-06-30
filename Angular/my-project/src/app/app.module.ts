@@ -106,6 +106,9 @@ import { EventComponent } from "./pages/event/event.component";
 import { IntervalComponent } from "./pages/interval/interval.component";
 
 import { DialogAddCategory } from "./pages/category/category.component";
+import { DialogAddEvent } from "./pages/event/event.component";
+import { DialogAddInterval } from "./pages/interval/interval.component";
+
 
 //
 @NgModule({
@@ -165,7 +168,8 @@ import { DialogAddCategory } from "./pages/category/category.component";
         NgxChartsModule,
         routing,
     ],
-    declarations: [AppComponent, CategoryComponent,EventComponent,IntervalComponent,DialogAddCategory],
+    declarations: [AppComponent, CategoryComponent,EventComponent,IntervalComponent,
+        DialogAddCategory,DialogAddEvent,DialogAddInterval],
       
                     /* WorkComponent,IndxComponent, AuthorNewComponent, AuthorComponent, ThemeComponent, ThemeNewComponent, WorkComponent, WorkShowComponent */
 
@@ -178,7 +182,7 @@ import { DialogAddCategory } from "./pages/category/category.component";
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         { provide: LocationStrategy, useClass: HashLocationStrategy }
     ],
-    entryComponents: [DialogAddCategory],
+    entryComponents: [DialogAddCategory,DialogAddEvent,DialogAddInterval],
 
     exports: [
     A11yModule,
