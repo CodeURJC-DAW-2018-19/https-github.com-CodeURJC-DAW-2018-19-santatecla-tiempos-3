@@ -45,7 +45,7 @@ public class EventRestController {
 	@PostMapping("/set/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void setEventById(@PathVariable long id, @RequestParam String name) {
-		Event event = new Event(name);
+		Event event = new Event(name,"Wiki 2", "Date 2");
 	     event.setIdEvent(id);
 	      service.save(event);
 	}

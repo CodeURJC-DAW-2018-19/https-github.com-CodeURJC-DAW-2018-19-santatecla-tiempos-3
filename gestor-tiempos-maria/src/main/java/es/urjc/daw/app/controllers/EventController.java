@@ -29,7 +29,7 @@ public class EventController {
 	}
 	@RequestMapping("/event/set/{idEvent}")
 	public String setEvent(Model model, @PathVariable long idEvent,@RequestParam String name) {
-		Event event = new Event(name);
+		Event event = new Event(name,"Wiki 2", "Date 2");
 		event.setIdEvent(idEvent);
         eventService.save(event);
 		webcontroller.addUserToModel(model);

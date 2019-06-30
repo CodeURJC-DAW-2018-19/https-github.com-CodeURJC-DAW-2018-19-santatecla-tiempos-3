@@ -33,8 +33,8 @@ public class IntervalController {
 		return "redirect:/";
 	}
 	@RequestMapping("/interval/set/{idInterval}")
-	public String setEvent(Model model,@RequestParam long idInterval,@RequestParam String intervalName,@RequestParam String startdate, @RequestParam String enddate,@RequestParam Long parentId ) {
-		Interval newInterval = new Interval(intervalName, startdate, enddate);
+	public String setEvent(Model model,@PathVariable long idInterval,@RequestParam String name,@RequestParam String startdate, @RequestParam String enddate,@RequestParam Long parentId ) {
+		Interval newInterval = new Interval(name, startdate, enddate);
         newInterval.setIdInterval(idInterval);
         if (parentId!=-1) { 
         	Interval padre = intervalService.findByIdInterval(parentId);
