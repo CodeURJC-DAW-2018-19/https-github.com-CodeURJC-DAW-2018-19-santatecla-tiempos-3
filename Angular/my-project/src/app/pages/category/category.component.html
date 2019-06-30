@@ -2,7 +2,35 @@
     <mat-card-title class="bgc-purple-800 titleCard">
         Categorías
     </mat-card-title>
-    <mat-card-content >
-        Contenido Categorias
+    <mat-card-content>
+        <table td-data-table>
+            <thead>
+                <tr td-data-table-column-row>
+                    <th td-data-table-column *ngFor="let head of headers">
+                        {{head}}
+                    </th>
+                    <th td-data-table-column>Actions</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr td-data-table-row *ngFor="let elem of elements">
+                    <td id="table_index" td-data-table-cell>
+                        {{elem.i}}
+                    </td>
+                    <td id ="table_name" td-data-table-cell>
+                        {{elem.name}}
+                    </td>
+                    <td  td-data-table-cell id ="table_actions">
+                        <button mat-button>
+                            <mat-icon class="tc-red-A700">delete</mat-icon>
+                        </button>
+                        <button mat-button>
+                            <mat-icon class="tc-purple-700">edit</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </mat-card-content>
 </mat-card>
