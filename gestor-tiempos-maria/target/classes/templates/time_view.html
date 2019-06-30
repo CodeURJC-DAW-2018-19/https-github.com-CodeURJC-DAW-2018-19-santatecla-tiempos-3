@@ -31,21 +31,41 @@
 
                                     <td style="width: 5% !important">{{-index}}</td>
                                     {{#logged}}
-                                    <td style="width: 30% !important">
-                                        <form id="myForm" action="/openintervaltab{{idInterval}}">
-                                            <a href='#'
-                                               onclick='this.parentNode.submit(); return false;'>{{name}}</a>
-                                        </form>
-                                    </td>
+                                    <td class="periodContent"><a data-toggle="modal" data-target="#showTimeModal{{idInterval}}"
+                                                href="#">{{name}}</a></td>
                                     <!--Popup SHOW Time-->
                                     <div class="modal fade" id="showTimeModal{{idInterval}}"
                                          tabindex="-1" role="dialog">
                                         <div class="modal-dialog modal-signup" role="document">
-                                            <div class="modal-content">
+                                            <div class="modal-content" style="width: 150% !important">
                                                 <div class="card card-signup card-plain">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title card-title">Show Interval:
-                                                            {{name}}</h5>
+														<div>
+															<h5 class="modal-title card-title">
+															{{name}}</h5>
+														</div>
+                                                        
+														<div>{{#childrens}}
+                                                                <ul>
+																	<li>{{name}}</li>
+																	{{#childrens}}
+                                                                	<ul>
+																		<li>{{name}}</li>
+																			{{#childrens}}
+                                                                		<ul>
+																			<li>{{name}}</li>
+																			{{#childrens}}
+                                                                			<ul>
+																				<li>{{name}}</li>
+																	
+                                                                			</ul>{{/childrens}}
+																	
+                                                                		</ul>{{/childrens}}
+																	
+                                                                	</ul>{{/childrens}}
+																	
+                                                                </ul>{{/childrens}}
+                                                            </Div>
                                                         <button type="button" class="close"
                                                                 data-dismiss="modal" aria-label="Close">
                                                             <i class="material-icons">clear</i>
@@ -58,7 +78,7 @@
                                     </div>
                                     {{/logged}}
                                     {{^logged}}
-                                    <td style="width: 35% !important">{{name}}</td>
+                                    <td style="width: 35% !important">R{{name}}</td>
                                     {{/logged}}
                                     <td style="width: 25% !important">{{start}}</td>
                                     <td style="width: 25% !important">{{end}}</td>
@@ -72,67 +92,53 @@
                                             <i class="material-icons">edit</i>
                                         </button> <!--Popup SET Category-->
                                         <div class="modal fade" id="setIntervalModal{{idInterval}}"
-                                             tabindex="-1" role="dialog">
-                                            <div class="modal-dialog modal-signup" role="document">
-                                                <div class="modal-content">
-                                                    <div class="card card-signup card-plain">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title card-title">Editar
-                                                                intervalo</h5>
-                                                            <button type="button" class="close"
-                                                                    data-dismiss="modal" aria-label="Close">
-                                                                <i class="material-icons">clear</i>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form action="/interval/set/{{idInterval}}">
-                                                                <div class="form-row">
-                                                                    <div class="form-group col-md-12">
-                                                                        <input name="intervalName" type="text"
-                                                                               class="form-control"
-                                                                               id="inputNameNewPeriod"
-                                                                               placeholder="Nombre">
-                                                                    </div>
-                                                                    <div class="form-group col-md-6">
-                                                                        <label>
-                                                                            <input name="startdate" type="text"
-                                                                                   class="form-control datetimepicker"
-                                                                                   value=""
-                                                                                   placeholder="Fecha de Inicio">
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="form-group col-md-6">
-                                                                        <label>
-                                                                            <input name="enddate" type="text"
-                                                                                   class="form-control datetimepicker"
-                                                                                   value=""
-                                                                                   placeholder="Fecha Fin">
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="form-group col-md-12">
-                                                                        <label>
-                                                                            <select name="parentId">
-                                                                                <option value="-1">Sin padre
-                                                                                </option>
-                                                                                {{#intervalos}}
-                                                                                <option value="{{idInterval}}">
-                                                                                    {{name}}
-                                                                                </option>
-                                                                                {{/intervalos}}
-                                                                            </select>
-                                                                        </label>
-                                                                    </div>
+														tabindex="-1" role="dialog">
+														<div class="modal-dialog modal-signup" role="document">
+															<div class="modal-content">
+																<div class="card card-signup card-plain">
+																	<div class="modal-header">
+																		<h5 class="modal-title card-title">Editar
+																			intervalo</h5>
+																		<button type="button" class="close"
+																			data-dismiss="modal" aria-label="Close">
+																			<i class="material-icons">clear</i>
+																		</button>
+																	</div>
+																	<div class="modal-body">
+																		<form action="/interval/set/{{idInterval}}">
+																			<div class="form-row">
+																				<div class="form-group col-md-12">
+																					<input name="name" type="text"
+																						class="form-control" id="inputNameNewPeriod"
+																						placeholder="Nombre">
+																				</div>
+																				<div class="form-group col-md-6">
+																					<input name="startdate" type="text"
+																						class="form-control datetimepicker" value=""
+																						placeholder="Fecha de Inicio">
+																				</div>
+																				<div class="form-group col-md-6">
+																					<input name="enddate" type="text"
+																						class="form-control datetimepicker" value=""
+																						placeholder="Fecha Fin">
+																				</div>
+																				<div class="form-group col-md-12">
+                                													<select name="parentId">
+                                														<option value="-1">Sin padre</option>
+                                    													{{#intervalos}}
+                                        												<option value="{{idInterval}}">{{name}}</option>
+                                    													{{/intervalos}}
+                                													</select>
+                            													</div>
 
-                                                                </div>
-                                                                <button type="submit" class="btn btn-primary">
-                                                                    ACEPTAR
-                                                                </button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+																			</div>
+																			<button type="submit" class="btn btn-primary">ACEPTAR</button>
+																		</form>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
                                         <form action="/interval/delete/{{idInterval}}">
                                             <button type="submit" title="Remove"
                                                     class="btn btn-danger btn-link btn-sm">
@@ -186,42 +192,34 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="/interval/create">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputNameNewPeriod"></label><input name="intervalName" type="text"
-                                                                               class="form-control"
-                                                                               id="inputNameNewPeriod"
-                                                                               placeholder="Nombre">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>
-                                    <input name="startdate" type="text"
-                                           class="form-control datetimepicker" value=""
-                                           placeholder="Fecha de Inicio">
-                                </label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>
-                                    <input name="enddate" type="text"
-                                           class="form-control datetimepicker" value=""
-                                           placeholder="Fecha Fin">
-                                </label>
-                            </div>
-                            <div class="form-group col-md-12">
-                                <label>
-                                    <select name="parentId">
-                                        <option value="-1">Sin padre</option>
-                                        {{#intervalos}}
+                    <form action="/addInterval">
+						<div class="form-row">
+							<div class="form-group col-md-12">
+								<input name="intervalName" type="text" class="form-control"
+									id="inputNameNewPeriod" placeholder="Nombre">
+							</div>
+							<div class="form-group col-md-6">
+								<input name="startdate" type="text"
+									class="form-control datetimepicker" value=""
+									placeholder="Fecha de Inicio">
+							</div>
+							<div class="form-group col-md-6">
+								<input name="enddate" type="text"
+									class="form-control datetimepicker" value=""
+									placeholder="Fecha Fin">
+							</div>
+							<div class="form-group col-md-12">
+                                <select name="parentId">
+                                	<option value="-1">Sin padre</option>
+                                    {{#intervalos}}
                                         <option value="{{idInterval}}">{{name}}</option>
-                                        {{/intervalos}}
-                                    </select>
-                                </label>
+                                    {{/intervalos}}
+                                </select>
                             </div>
 
-                        </div>
-                        <button type="submit" class="btn btn-primary">ACEPTAR</button>
-                    </form>
+						</div>
+						<button type="submit" class="btn btn-primary">ACEPTAR</button>
+					</form>
                 </div>
             </div>
         </div>

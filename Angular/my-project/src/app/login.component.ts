@@ -14,25 +14,26 @@ export interface DialogData {
 export class LoginComponent {
   constructor(public dialog: MatDialog, public router: Router, public loginService: LoginService) { }
   email: string;
-  password: string; 
+  password: string;
   openLoginDialog(): void {
     const dialogRef = this.dialog.open(DialogLoginComponent, {
       width: '250px',
-      data:{email: this.email, password: this.password}
+      data: { email: this.email, password: this.password }
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.login(result.email,result.password);
-    }); 
+      this.login(result.email, result.password);
+    });
   }
 
   login(email: string, password: string) {
-   /* this.loginService.logIn(email, password).subscribe((u) => {
-      console.log(u);
-      this.dialogRef.close();
-    },
+    this.loginService.logIn(email, password).subscribe(
+      (response) => {
+        console.log(response);
+        //this.dialogRef.close();
+      },
       (error) => alert('Invalid user or password'),
-    );*/
+    );
   }
 
   logout() {
@@ -55,5 +56,5 @@ export class LoginComponent {
   templateUrl: './dialog-login.html',
 })
 export class DialogLoginComponent {
-  constructor(dialogRef: MatDialogRef<DialogLoginComponent>,@Inject(MAT_DIALOG_DATA) public data: DialogData,) { }
+  constructor(dialogRef: MatDialogRef<DialogLoginComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData,public loginService: LoginService ) { }
 }

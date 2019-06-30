@@ -7,6 +7,7 @@ const URL = '/api';
 export interface User {
     id?: number;
     name: string;
+    email:string;
     roles: string[];
     authdata: string;
 }
@@ -26,9 +27,8 @@ export class LoginService {
             this.setCurrentUser(user);
         }
     }
-    logIn(user: string, pass: string) {
-
-        let auth = window.btoa(user + ':' + pass);
+    logIn(email: string, password: string) {
+        let auth = window.btoa(email + ':' + password);
         const headers = new HttpHeaders({
             Authorization: 'Basic ' + auth,
             'X-Requested-With': 'XMLHttpRequest',
@@ -41,7 +41,6 @@ export class LoginService {
                     user.authdata = auth;
                     localStorage.setItem('currentUser', JSON.stringify(user));
                 }
-
                 return user;
             }));
     }
