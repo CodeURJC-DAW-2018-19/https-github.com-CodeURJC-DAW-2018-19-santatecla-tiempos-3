@@ -1,11 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
-import { IntervalService } from './interval.service';
-export interface DialogData {
-    name: string;
-    ini: string;
-    fin: string;
-}
+import { IntervalService, Interval } from './interval.service';
+
 @Component({
     selector: 'interval-view',
     templateUrl: './interval.component.html',
@@ -31,9 +27,11 @@ export class IntervalComponent implements OnInit {
             }
         )
     }
-    openDialog(): void {
-        this.dialog.open(DialogAddInterval, {
-
+    openDialogShowInterval(elem: Interval): void {
+        console.log(elem);
+        this.dialog.open(DialogShowInterval, {
+            width: '250px',
+            data: elem
         });
     }
 }
@@ -46,5 +44,16 @@ export class IntervalComponent implements OnInit {
     templateUrl: 'dialog-add-interval.html',
 })
 export class DialogAddInterval {
-    constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+    constructor(@Inject(MAT_DIALOG_DATA) public data: Interval) { }
 }   
+
+/**
+ * DIALOG SHOW INTERVAL
+ */
+@Component({
+    selector: 'dialog-show-interval',
+    templateUrl: 'dialog-show-interval.html',
+})
+export class DialogShowInterval{
+    constructor(@Inject(MAT_DIALOG_DATA) public data: Interval) { }
+}

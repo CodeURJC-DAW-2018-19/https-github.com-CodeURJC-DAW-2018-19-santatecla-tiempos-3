@@ -19,7 +19,7 @@
                         {{elem.idCategory}}
                     </td>
                     <td id ="table_name" td-data-table-cell>
-                        {{elem.name}}
+                       <a mat-list-item (click)="openDialogShowCategory(elem)"> {{elem.name}}</a>
                     </td>
                     <td  td-data-table-cell id ="table_actions">
                         <button mat-button>
@@ -33,7 +33,7 @@
             </tbody>
         </table>
         <br>
-        <button mat-button (click)="openDialog()"><mat-icon class="tc-purple-700">add_circle</mat-icon>
+        <button mat-button (click)="openDialogAddCategory()"><mat-icon class="tc-purple-700">add_circle</mat-icon>
         </button>  
       </mat-card-content>
 </mat-card>

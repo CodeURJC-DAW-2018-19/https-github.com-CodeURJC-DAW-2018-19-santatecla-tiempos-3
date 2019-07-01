@@ -2,9 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { CategoryService, Category } from './category.service';
 
-export interface DialogData {
-    name: string;
-}
 /**
  * CATEGORY VIEW
  */
@@ -15,25 +12,32 @@ export interface DialogData {
 })
 
 
-export class CategoryComponent implements OnInit{
+export class CategoryComponent implements OnInit {
     constructor(public dialog: MatDialog, private service: CategoryService) { }
-    categories : Category[]; 
+    categories: Category[];
     name: string;
     headers = ["#id", "Nombre"];
     ngOnInit(): void {
         this.service.getCategories().subscribe(
             result => {
-                this.categories = result; 
-                console.log (result);
+                this.categories = result;
+                console.log(result);
             },
             error => {
                 console.log(<any>error);
             }
         )
     }
-    openDialog(): void {
+    openDialogAddCategory(): void {
         this.dialog.open(DialogAddCategory, {
 
+        });
+    }
+    openDialogShowCategory(elem: Category): void {
+        console.log(elem);
+        this.dialog.open(DialogShowCategory, {
+            width: '250px',
+            data: elem
         });
     }
 }
@@ -46,5 +50,16 @@ export class CategoryComponent implements OnInit{
     templateUrl: 'dialog-add-category.html',
 })
 export class DialogAddCategory {
-    constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+    constructor(@Inject(MAT_DIALOG_DATA) public data: Category) { }
+}
+
+/**
+ * DIALOG SHOW CATEGORY
+ */
+@Component({
+    selector: 'dialog-show-category',
+    templateUrl: 'dialog-show-category.html',
+})
+export class DialogShowCategory{
+    constructor(@Inject(MAT_DIALOG_DATA) public data: Category) { }
 }

@@ -19,7 +19,7 @@
                         {{elem.idInterval}}
                     </td>
                     <td id="table_name" td-data-table-cell>
-                        {{elem.name}}
+                        <a mat-list-item (click)="openDialogShowInterval(elem)"> {{elem.name}}</a>
                     </td>
                     <td id="table_ini" td-data-table-cell>
                         {{elem.start}}
@@ -38,8 +38,9 @@
                 </tr>
             </tbody>
         </table>
-        <button mat-button (click)="openDialog()"><mat-icon class="tc-purple-700">add_circle</mat-icon>
-        </button> 
+        <button mat-button (click)="openDialog()">
+            <mat-icon class="tc-purple-700">add_circle</mat-icon>
+        </button>
 
     </mat-card-content>
 </mat-card>

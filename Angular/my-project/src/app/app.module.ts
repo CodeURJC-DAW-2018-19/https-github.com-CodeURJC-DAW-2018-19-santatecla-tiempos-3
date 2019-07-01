@@ -107,8 +107,11 @@ import { EventComponent } from "./pages/event/event.component";
 import { IntervalComponent } from "./pages/interval/interval.component";
 
 import { DialogAddCategory } from "./pages/category/category.component";
+import { DialogShowCategory } from "./pages/category/category.component";
 import { DialogAddEvent } from "./pages/event/event.component";
+import { DialogShowEvent } from "./pages/event/event.component";
 import { DialogAddInterval } from "./pages/interval/interval.component";
+import { DialogShowInterval } from "./pages/interval/interval.component";
 import { DialogLoginComponent } from "./login.component";
 
 
@@ -174,7 +177,7 @@ import { IntervalService } from "./pages/interval/interval.service";
         routing,
     ],
     declarations: [AppComponent, CategoryComponent,EventComponent,IntervalComponent,
-        DialogAddCategory,DialogAddEvent,DialogAddInterval, LoginComponent,DialogLoginComponent],
+        DialogAddCategory,DialogAddEvent,DialogAddInterval, LoginComponent,DialogLoginComponent,DialogShowCategory,DialogShowEvent,DialogShowInterval],
       
                     /* WorkComponent,IndxComponent, AuthorNewComponent, AuthorComponent, ThemeComponent, ThemeNewComponent, WorkComponent, WorkShowComponent */
 
@@ -187,7 +190,7 @@ import { IntervalService } from "./pages/interval/interval.service";
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         { provide: LocationStrategy, useClass: HashLocationStrategy }
     ],
-    entryComponents: [DialogAddCategory,DialogAddEvent,DialogAddInterval,DialogLoginComponent],
+    entryComponents: [DialogAddCategory,DialogAddEvent,DialogAddInterval,DialogLoginComponent,DialogShowCategory,DialogShowEvent,DialogShowInterval],
 
     exports: [
     A11yModule,
