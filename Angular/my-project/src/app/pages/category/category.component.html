@@ -18,22 +18,27 @@
                     <td id="table_index" td-data-table-cell>
                         {{elem.idCategory}}
                     </td>
-                    <td id ="table_name" td-data-table-cell>
-                       <a mat-list-item (click)="openDialogShowCategory(elem)"> {{elem.name}}</a>
+                    <td id="table_name" td-data-table-cell>
+                        <a mat-list-item (click)="openDialogShowCategory(elem)"> {{elem.name}}</a>
                     </td>
-                    <td  td-data-table-cell id ="table_actions">
+                    <td td-data-table-cell id="table_actions">
                         <button mat-button>
-                            <mat-icon class="tc-red-A700">delete</mat-icon>
+                            <a mat-list-item (click)="deleteCategory(elem)">
+                                <mat-icon class="tc-red-A700">delete</mat-icon>
+                            </a>
                         </button>
                         <button mat-button>
-                            <mat-icon class="tc-purple-700">edit</mat-icon>
+                            <a mat-list-item (click)="openDialogSetCategory(elem)">
+                                <mat-icon class="tc-purple-700">edit</mat-icon>
+                            </a>
                         </button>
                     </td>
                 </tr>
             </tbody>
         </table>
         <br>
-        <button mat-button (click)="openDialogAddCategory()"><mat-icon class="tc-purple-700">add_circle</mat-icon>
-        </button>  
-      </mat-card-content>
+        <button mat-button (click)="openDialogAddCategory()">
+            <mat-icon class="tc-purple-700">add_circle</mat-icon>
+        </button>
+    </mat-card-content>
 </mat-card>

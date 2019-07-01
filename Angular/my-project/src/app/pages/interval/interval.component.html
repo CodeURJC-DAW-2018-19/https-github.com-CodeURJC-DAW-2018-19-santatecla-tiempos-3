@@ -29,10 +29,14 @@
                     </td>
                     <td id="table_actions" td-data-table-cell>
                         <button mat-button>
-                            <mat-icon class="tc-red-A700">delete</mat-icon>
+                            <a mat-list-item (click)="deleteInterval(elem)">
+                                <mat-icon class="tc-red-A700">delete</mat-icon>
+                            </a>
                         </button>
                         <button mat-button>
-                            <mat-icon class="tc-purple-700">edit</mat-icon>
+                            <a mat-list-item (click)="openDialogSetInterval(elem)">
+                                <mat-icon class="tc-purple-700">edit</mat-icon>
+                            </a>
                         </button>
                     </td>
                 </tr>

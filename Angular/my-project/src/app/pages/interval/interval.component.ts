@@ -27,6 +27,15 @@ export class IntervalComponent implements OnInit {
             }
         )
     }
+    openDialog(): void {
+        this.dialog.open(DialogAddInterval, {});
+    }
+    openDialogSetInterval(elem: Interval): void {
+        this.dialog.open(DialogAddInterval, {});
+    }
+    deleteInterval(elem: Interval):void{
+
+    }
     openDialogShowInterval(elem: Interval): void {
         console.log(elem);
         this.dialog.open(DialogShowInterval, {

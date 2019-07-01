@@ -29,12 +29,15 @@ export class CategoryComponent implements OnInit {
         )
     }
     openDialogAddCategory(): void {
-        this.dialog.open(DialogAddCategory, {
+        this.dialog.open(DialogAddCategory, {});
+    }
+    openDialogSetCategory(elem: Category): void {
+        this.dialog.open(DialogAddCategory, {});
+    }
+    deleteCategory(elem: Category):void{
 
-        });
     }
     openDialogShowCategory(elem: Category): void {
-        console.log(elem);
         this.dialog.open(DialogShowCategory, {
             width: '250px',
             data: elem
