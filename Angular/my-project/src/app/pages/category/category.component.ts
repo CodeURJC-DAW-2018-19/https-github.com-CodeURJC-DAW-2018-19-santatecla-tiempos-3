@@ -1,6 +1,6 @@
-import { Component, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { CategoryService } from './category.service';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { CategoryService, Category } from './category.service';
 
 export interface DialogData {
     name: string;
@@ -15,34 +15,22 @@ export interface DialogData {
 })
 
 
-export class CategoryComponent {
+export class CategoryComponent implements OnInit{
     constructor(public dialog: MatDialog, private service: CategoryService) { }
-   elements = [
-        { i: 1, name: 'Categoría 1' },
-        { i: 2, name: 'Categoría 2' },
-        { i: 3, name: 'Categoría 3' },
-        { i: 4, name: 'Categoría 4' },
-        { i: 5, name: 'Categoría 5' },
-        { i: 6, name: 'Categoría 6' },
-        { i: 7, name: 'Categoría 7' },
-        { i: 8, name: 'Categoría 8' },
-        { i: 9, name: 'Categoría 9' },
-        { i: 10, name: 'Categoría 10' },
-    ];
-
-    prueba(){
-        
+    categories : Category[]; 
+    name: string;
+    headers = ["#id", "Nombre"];
+    ngOnInit(): void {
         this.service.getCategories().subscribe(
             result => {
+                this.categories = result; 
                 console.log (result);
             },
             error => {
                 console.log(<any>error);
             }
-  
         )
     }
-    name: string;
     openDialog(): void {
         this.dialog.open(DialogAddCategory, {
 

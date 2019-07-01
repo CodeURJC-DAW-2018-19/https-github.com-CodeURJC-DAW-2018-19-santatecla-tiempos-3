@@ -7,7 +7,8 @@ import { environment } from 'src/environments/environment';
 
 export interface Category {
     id?: number;
-    nombre: string;
+    name: string;
+    events: Event[];
 }
 const API_URL = environment.apiEndpoint + "/api/categories"
 @Injectable()

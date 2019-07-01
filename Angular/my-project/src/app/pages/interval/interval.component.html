@@ -14,18 +14,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr td-data-table-row *ngFor="let elem of elements">
+                <tr td-data-table-row *ngFor="let elem of intervals">
                     <td id="table_index" td-data-table-cell>
-                        {{elem.i}}
+                        {{elem.idInterval}}
                     </td>
                     <td id="table_name" td-data-table-cell>
                         {{elem.name}}
                     </td>
                     <td id="table_ini" td-data-table-cell>
-                        {{elem.ini}}
+                        {{elem.start}}
                     </td>
                     <td id="table_fin" td-data-table-cell>
-                        {{elem.fin}}
+                        {{elem.end}}
                     </td>
                     <td id="table_actions" td-data-table-cell>
                         <button mat-button>

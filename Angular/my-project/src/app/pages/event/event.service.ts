@@ -6,8 +6,12 @@ import { environment } from 'src/environments/environment';
 import { catchError } from 'rxjs/operators';
 
 export interface Event {
-    id?: number;
-    nombre: string;
+    idEvent?: number;
+    name: string;
+    eventPhoto: string; 
+    eventWiki: string; 
+    eventDate: string; 
+
 }
 const API_URL =environment.apiEndpoint+"/api/events"
 
@@ -15,7 +19,7 @@ const API_URL =environment.apiEndpoint+"/api/events"
 export class EventService {
     constructor( private http: HttpClient,public loginService: LoginService,) {}
 
-    getIntervals(): Observable<Event[]>{
+    getEvents(): Observable<Event[]>{
         return this.http.get<Event[]>(API_URL+"/", { withCredentials: true }).pipe(catchError((error) => this.handleError(error)));
     }
     private handleError(error: any) {

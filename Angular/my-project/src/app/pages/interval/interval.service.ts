@@ -7,9 +7,10 @@ import { catchError } from 'rxjs/operators';
 
 export interface Interval {
     id?: number;
-    nombre: string;
+    name: string;
     ini: Date; 
     fin: Date
+    childrens: Interval[];
 }
 const API_URL =environment.apiEndpoint+"/api/intervals"
 
