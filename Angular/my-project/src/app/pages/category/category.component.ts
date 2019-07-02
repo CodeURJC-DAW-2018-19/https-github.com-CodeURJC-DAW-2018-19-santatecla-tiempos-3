@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { CategoryService, Category } from './category.service';
+import { LoginService } from 'src/app/auth/login.service';
 
 /**
  * CATEGORY VIEW
@@ -13,7 +14,7 @@ import { CategoryService, Category } from './category.service';
 
 
 export class CategoryComponent implements OnInit {
-    constructor(public dialog: MatDialog, private service: CategoryService) { }
+    constructor(public dialog: MatDialog, private service: CategoryService, public loginService: LoginService) { }
     categories: Category[];
     name: string;
     headers = ["#id", "Nombre"];
@@ -35,7 +36,14 @@ export class CategoryComponent implements OnInit {
         this.dialog.open(DialogAddCategory, {});
     }
     deleteCategory(elem: Category):void{
-
+      /*  this.service.deleteCategory(elem).subscribe(
+            result=>{
+                console.log ("Se ha borrado una categoría");
+            },
+            error => {
+                console.log(<any>error);
+            }
+        )*/
     }
     openDialogShowCategory(elem: Category): void {
         this.dialog.open(DialogShowCategory, {

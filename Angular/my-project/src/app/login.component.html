@@ -1,5 +1,5 @@
-<button *ngIf="!loginService.isLogged" (click)="openLoginDialog()"> Login</button>
+<button mat-button *ngIf="!loginService.isLogged" (click)="openLoginDialog()"> Login</button>
 <div *ngIf="loginService.isLogged" >
     Bienvenido {{nameLogged}} <!--cambiar-->
-    <button (click)="logout()"> Logout</button>
+    <button  mat-button (click)="logout()"> Logout</button>
 </div>

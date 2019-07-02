@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { EventService } from './event.service';
+import { LoginService } from 'src/app/auth/login.service';
 
 /**
  * EVENT VIEW
@@ -12,7 +13,7 @@ import { EventService } from './event.service';
 })
 
 export class EventComponent implements OnInit {
-    constructor(public dialog: MatDialog, private service: EventService) { }
+    constructor(public dialog: MatDialog, private service: EventService, public loginService: LoginService) { }
     events: any[];
     headers = ["#id", "Nombre"];
     name: string;

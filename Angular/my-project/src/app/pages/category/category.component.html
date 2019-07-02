@@ -9,7 +9,7 @@
                     <th td-data-table-column *ngFor="let head of headers">
                         {{head}}
                     </th>
-                    <th td-data-table-column>Actions</th>
+                    <th *ngIf="loginService.isLogged" td-data-table-column>Actions</th>
 
                 </tr>
             </thead>
@@ -18,10 +18,13 @@
                     <td id="table_index" td-data-table-cell>
                         {{elem.idCategory}}
                     </td>
-                    <td id="table_name" td-data-table-cell>
+                    <td *ngIf="loginService.isLogged" id="table_name" td-data-table-cell>
                         <a mat-list-item (click)="openDialogShowCategory(elem)"> {{elem.name}}</a>
                     </td>
-                    <td td-data-table-cell id="table_actions">
+                    <td *ngIf="!loginService.isLogged" id="table_name" td-data-table-cell>
+                        {{elem.name}}
+                    </td>
+                    <td *ngIf="loginService.isLogged" td-data-table-cell id="table_actions">
                         <button mat-button>
                             <a mat-list-item (click)="deleteCategory(elem)">
                                 <mat-icon class="tc-red-A700">delete</mat-icon>
@@ -37,7 +40,7 @@
             </tbody>
         </table>
         <br>
-        <button mat-button (click)="openDialogAddCategory()">
+        <button *ngIf="loginService.isLogged" mat-button (click)="openDialogAddCategory()">
             <mat-icon class="tc-purple-700">add_circle</mat-icon>
         </button>
     </mat-card-content>

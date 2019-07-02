@@ -4,7 +4,7 @@
     <td-layout-nav [toolbarTitle]="(media.registerQuery('gt-xs') | async) ? 'Gestor de Tiempos' : ''" navigationRoute="/">
 
         <div td-toolbar-content layout="row" layout-align="start right" flex>
-            <login></login>
+            <login style="margin-left:80%"></login>
             <!--AQUI VA EL LOGIN-->
         </div>
         <td-layout-manage-list #manageList [opened]="media.registerQuery('gt-sm') | async" [mode]="(media.registerQuery('gt-sm') | async) ? 'side' :  'over'"

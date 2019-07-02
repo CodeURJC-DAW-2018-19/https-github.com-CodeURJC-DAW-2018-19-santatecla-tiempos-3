@@ -9,7 +9,7 @@
                     <th td-data-table-column *ngFor="let head of headers">
                         {{head}}
                     </th>
-                    <th td-data-table-column>Actions</th>
+                    <th *ngIf="loginService.isLogged" td-data-table-column>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -17,10 +17,13 @@
                     <td id="table_index" td-data-table-cell>
                         {{elem.idEvent}}
                     </td>
-                    <td id="table_name" td-data-table-cell>
-                            <a mat-list-item (click)="openDialogShowEvent(elem)"> {{elem.name}}</a>
-                        </td>
-                    <td td-data-table-cell id="table_actions">
+                    <td *ngIf="loginService.isLogged" id="table_name" td-data-table-cell>
+                        <a mat-list-item (click)="openDialogShowEvent(elem)"> {{elem.name}}</a>
+                    </td>
+                    <td *ngIf="!loginService.isLogged" id="table_name" td-data-table-cell>
+                        {{elem.name}}
+                    </td>
+                    <td *ngIf="loginService.isLogged" td-data-table-cell id="table_actions">
                         <button mat-button>
                             <mat-icon class="tc-red-A700">delete</mat-icon>
                         </button>
@@ -32,7 +35,8 @@
             </tbody>
         </table>
         <br>
-        <button mat-button (click)="openDialog()"><mat-icon class="tc-purple-700">add_circle</mat-icon>
-        </button>  
+        <button *ngIf="loginService.isLogged" mat-button (click)="openDialog()">
+            <mat-icon class="tc-purple-700">add_circle</mat-icon>
+        </button>
     </mat-card-content>
 </mat-card>

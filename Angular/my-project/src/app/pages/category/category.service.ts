@@ -6,7 +6,7 @@ import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 export interface Category {
-    id?: number;
+    idCategory?: number;
     name: string;
     events: Event[];
 }
@@ -18,6 +18,10 @@ export class CategoryService {
     getCategories(): Observable<Category[]> {
         return this.http.get<Category[]>(API_URL + "/", { withCredentials: true }).pipe(catchError((error) => this.handleError(error)));
     }
+    /*deleteCategory(elem: Category):Observable<Category>{
+        return this.http.delete<Category>(API_URL + "/delete/"+elem.idCategory) .pipe(catchError((error) => this.handleError(error)));
+
+    }*/
 
     private handleError(error: any) {
         console.error(error);

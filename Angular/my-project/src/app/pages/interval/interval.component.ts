@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { IntervalService, Interval } from './interval.service';
+import { LoginService } from 'src/app/auth/login.service';
 
 @Component({
     selector: 'interval-view',
@@ -9,7 +10,7 @@ import { IntervalService, Interval } from './interval.service';
 })
 
 export class IntervalComponent implements OnInit {
-    constructor(public dialog: MatDialog, private service: IntervalService) { }
+    constructor(public dialog: MatDialog, private service: IntervalService, public loginService: LoginService) { }
     headers = ["#id", "Nombre", "Fecha de Inicio", "Fecha de Fin"]
     intervals: any [];
     name: string;
