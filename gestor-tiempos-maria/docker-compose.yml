@@ -1,28 +1,108 @@
-version: "3"
+
+  
+version: "2.1"
 
 services:
-  mysql:
-    image: mysql:latest
-    command: --default-authentication-plugin=mysql_native_password
-    environment:
-      - MYSQL_DATABASE=gestor_tiempos_bbdd
-      - MYSQL_ROOT_PASSWORD=
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=
-    ports:
-      - 3306
+    gestor-tiempos-docker:
+        build: ./
+        depends_on:
+            - mysql
+                
+        ports:
+            - "8080:8443"
+        environment:
+            SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/gestor_tiempos_bbdd?useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
+            DATABASE_HOST: db
+            DATABASE_USER: root
+            DATABASE_PASSWORD: 1234
+            DATABASE_NAME: gestor_tiempos_bbdd
+            DATABASE_PORT: 3306
+            
+            
+    mysql:
+        container_name: db
+        hostname: localhost
+        image: mysql
+        command: --default-authentication-plugin=mysql_native_password
+        healthcheck:
+            test: "/usr/bin/mysql --user=root --password=1234 --execute \"SHOW DATABASES\""
+            interval: 5s
+            timeout: 30s
+            retries: 5
+        environment:
+            MYSQL_USER: "root"
+            MYSQL_ROOT_PASSWORD: "1234"
+            MYSQL_DATABASE: "gestor_tiempos_bbdd"
+#        expose:
+#          - 3306
 
-  spring-boot-jpa-docker-webapp:
+    
 
-    image: daw:latest
-    ports:
-      - 8080:8443
-    links:
-      - mysql
-    depends_on:
-      - mysql
-    restart: always
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/gestor_tiempos_bbdd?useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD:
+
+
+
+#version: '3.7'
+#services:
+#  movie-quote-service:
+#    image: g00glen00b/movie-quote-service:0.0.1
+#    ports:
+#      - 8080:8080
+#    depends_on:
+#      - movie-quote-database
+#    networks:
+#      movie-quote-network:
+#        aliases:
+#          - movie-quote-service
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:mysql://movie-quote-database/${DATABASE_NAME}?useSSL=false&allowPublicKeyRetrieval=true
+#      - SPRING_DATASOURCE_USERNAME=root
+#      - SPRING_DATASOURCE_PASSWORD=1234
+#  movie-quote-database:
+#    image: mysql:8.0.14
+#    ports:
+#      - 8080:8443
+#    networks:
+#      movie-quote-network:
+#        aliases:
+#          - movie-quote-database
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=1234
+#      - MYSQL_USER=root
+#      - MYSQL_PASSWORD=1234
+#      - MYSQL_DATABASE=gestor_tiempos_bbdd
+#      - MYSQL_ONETIME_PASSWORD=true
+#      
+#networks:
+#  movie-quote-network:
+#  
+#  
+#  
+#
+#version: "3"
+#
+#services:
+#  mysql:
+#    image: mysql:latest
+#    command: --default-authentication-plugin=mysql_native_password
+#    environment:
+#      - MYSQL_DATABASE=gestor_tiempos_bbdd
+#      - MYSQL_ROOT_PASSWORD=1234
+#      - MYSQL_USER=root
+#      - MYSQL_PASSWORD=1234
+#    ports:
+#      - 3306
+#
+#  spring-boot-jpa-docker-webapp:
+#
+#    image: daw:latest
+#    ports:
+#      - 8080:8443
+#    links:
+#      - mysql
+#    depends_on:
+#      - mysql
+#    restart: always
+#    environment:
+#      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/gestor_tiempos_bbdd?useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
+#      SPRING_DATASOURCE_USERNAME: root
+#      SPRING_DATASOURCE_PASSWORD:

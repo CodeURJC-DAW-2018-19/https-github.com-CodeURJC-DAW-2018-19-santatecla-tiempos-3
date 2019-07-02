@@ -27,7 +27,7 @@ EXPOSE 8443
 ARG JAR_FILE=./target/practica_fase4-0.1.0.jar
 
  # Add the application's jar to the container
-ADD ${JAR_FILE} practica_fase4-0.1.0.jar
+ADD target/project-docker.jar project-docker.jar
 
  # Run the jar file
-ENTRYPOINT ["java","-jar","/practica_fase4-0.1.0.jar"]
+ENTRYPOINT ["java","-jar","/project-docker.jar"]
