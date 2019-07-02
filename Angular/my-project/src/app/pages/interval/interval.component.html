@@ -9,7 +9,7 @@
                     <th td-data-table-column *ngFor="let head of headers">
                         {{head}}
                     </th>
-                    <th *ngIf="loginService.isLogged" td-data-table-column>Actions</th>
+                    <th *ngIf="loginService.isAdmin" td-data-table-column>Actions</th>
 
                 </tr>
             </thead>
@@ -30,7 +30,7 @@
                     <td id="table_fin" td-data-table-cell>
                         {{elem.end}}
                     </td>
-                    <td *ngIf="loginService.isLogged" id="table_actions" td-data-table-cell>
+                    <td *ngIf="loginService.isAdmin" id="table_actions" td-data-table-cell>
                         <button mat-button>
                             <a mat-list-item (click)="deleteInterval(elem)">
                                 <mat-icon class="tc-red-A700">delete</mat-icon>
@@ -45,7 +45,7 @@
                 </tr>
             </tbody>
         </table>
-        <button *ngIf="loginService.isLogged" mat-button (click)="openDialog()">
+        <button *ngIf="loginService.isAdmin" mat-button (click)="openDialog()">
             <mat-icon class="tc-purple-700">add_circle</mat-icon>
         </button>
 
