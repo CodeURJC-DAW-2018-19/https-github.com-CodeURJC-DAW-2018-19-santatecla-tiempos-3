@@ -35,15 +35,16 @@ export class CategoryComponent implements OnInit {
     openDialogSetCategory(elem: Category): void {
         this.dialog.open(DialogAddCategory, {});
     }
-    deleteCategory(elem: Category):void{
-      /*  this.service.deleteCategory(elem).subscribe(
-            result=>{
-                console.log ("Se ha borrado una categoría");
+    deleteCategory(elem: Category): void {
+        this.service.deleteCategory(elem).subscribe(
+            result => {
+                console.log("Se ha borrado una categoría");
+                this.ngOnInit();
             },
             error => {
                 console.log(<any>error);
             }
-        )*/
+        )
     }
     openDialogShowCategory(elem: Category): void {
         this.dialog.open(DialogShowCategory, {
@@ -71,6 +72,6 @@ export class DialogAddCategory {
     selector: 'dialog-show-category',
     templateUrl: 'dialog-show-category.html',
 })
-export class DialogShowCategory{
+export class DialogShowCategory {
     constructor(@Inject(MAT_DIALOG_DATA) public data: Category) { }
 }

@@ -20,7 +20,10 @@ export class EventService {
     constructor( private http: HttpClient,public loginService: LoginService,) {}
 
     getEvents(): Observable<Event[]>{
-        return this.http.get<Event[]>(API_URL+"/", { withCredentials: true }).pipe(catchError((error) => this.handleError(error)));
+        return this.http.get<Event[]>(API_URL+"/", { withCredentials: false }).pipe(catchError((error) => this.handleError(error)));
+    }
+    deleteEvent(elem: Event):Observable<Event>{
+        return this.http.delete<Event>(API_URL + "/delete/"+elem.idEvent,{ withCredentials: false }) .pipe(catchError((error) => this.handleError(error)));
     }
     private handleError(error: any) {
         console.error(error);

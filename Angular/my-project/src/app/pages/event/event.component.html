@@ -24,10 +24,10 @@
                         {{elem.name}}
                     </td>
                     <td *ngIf="loginService.isAdmin" td-data-table-cell id="table_actions">
-                        <button mat-button>
+                        <button mat-button (click)="deleteEvent(elem)">
                             <mat-icon class="tc-red-A700">delete</mat-icon>
                         </button>
-                        <button mat-button>
+                        <button mat-button (click)="openDialogSetEvent(elem)">
                             <mat-icon class="tc-purple-700">edit</mat-icon>
                         </button>
                     </td>
@@ -35,7 +35,7 @@
             </tbody>
         </table>
         <br>
-        <button *ngIf="loginService.isAdmin" mat-button (click)="openDialog()">
+        <button *ngIf="loginService.isAdmin" mat-button (click)="openDialogAddEvent()">
             <mat-icon class="tc-purple-700">add_circle</mat-icon>
         </button>
     </mat-card-content>

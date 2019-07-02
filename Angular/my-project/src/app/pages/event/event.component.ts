@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
-import { EventService } from './event.service';
+import { EventService, Event } from './event.service';
 import { LoginService } from 'src/app/auth/login.service';
 
 /**
@@ -29,11 +29,22 @@ export class EventComponent implements OnInit {
         )
     }
 
-    openDialog(): void {
-        this.dialog.open(DialogAddEvent, {
-
-        });
-       
+    openDialogAddEvent(): void {
+        this.dialog.open(DialogAddEvent, {});
+    }
+    openDialogSetEvent(elem: Event): void {
+        this.dialog.open(DialogAddEvent, {});
+    }
+    deleteEvent(elem: Event):void{
+     this.service.deleteEvent(elem).subscribe(
+            result=>{
+                console.log ("Se ha borrado un evento");
+                this.ngOnInit();
+            },
+            error => {
+                console.log(<any>error);
+            }
+        )
     }
     openDialogShowEvent(elem: Event): void {
         this.dialog.open(DialogShowEvent, {

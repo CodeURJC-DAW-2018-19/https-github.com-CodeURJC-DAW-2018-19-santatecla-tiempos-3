@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 import { catchError } from 'rxjs/operators';
 
 export interface Interval {
-    id?: number;
+    idInterval?: number;
     name: string;
     ini: Date; 
     fin: Date
@@ -19,7 +19,10 @@ export class IntervalService {
     constructor( private http: HttpClient,public loginService: LoginService,) {}
 
     getIntervals(): Observable<Interval[]>{
-        return this.http.get<Interval[]>(API_URL+"/", { withCredentials: true }).pipe(catchError((error) => this.handleError(error)));
+        return this.http.get<Interval[]>(API_URL+"/", { withCredentials: false }).pipe(catchError((error) => this.handleError(error)));
+    }
+    deleteInterval(elem: Interval):Observable<Interval>{
+        return this.http.delete<Interval>(API_URL + "/delete/"+elem.idInterval,{ withCredentials: false }) .pipe(catchError((error) => this.handleError(error)));
     }
     private handleError(error: any) {
         console.error(error);

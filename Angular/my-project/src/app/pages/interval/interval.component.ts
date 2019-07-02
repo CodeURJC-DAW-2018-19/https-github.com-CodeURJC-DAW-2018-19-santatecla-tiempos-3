@@ -35,7 +35,15 @@ export class IntervalComponent implements OnInit {
         this.dialog.open(DialogAddInterval, {});
     }
     deleteInterval(elem: Interval):void{
-
+        this.service.deleteInterval(elem).subscribe(
+            result=>{
+                console.log ("Se ha borrado un intervalo");
+                this.ngOnInit();
+            },
+            error => {
+                console.log(<any>error);
+            }
+        )
     }
     openDialogShowInterval(elem: Interval): void {
         console.log(elem);
