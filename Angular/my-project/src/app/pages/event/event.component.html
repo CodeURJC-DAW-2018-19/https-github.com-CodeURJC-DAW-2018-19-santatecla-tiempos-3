@@ -13,7 +13,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr td-data-table-row *ngFor="let elem of events">
+                <tr td-data-table-row *ngFor="let elem of pagedItems">
                     <td id="table_index" td-data-table-cell>
                         {{elem.idEvent}}
                     </td>
@@ -34,6 +34,16 @@
                 </tr>
             </tbody>
         </table>
+        <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                <button (click)="setPage(1)">First</button>
+                <button (click)="setPage(pager.currentPage - 1)">Previous</button>
+                <div *ngFor="let page of pager.pages">
+                    <button (click)="setPage(page)">{{page}}</button>
+                </div>
+                <button (click)="setPage(pager.currentPage + 1)">Next</button>
+    
+                <button (click)="setPage(pager.totalPages)">Last</button>
+            </ul>
         <br>
         <button *ngIf="loginService.isAdmin" mat-button (click)="openDialogAddEvent()">
             <mat-icon class="tc-purple-700">add_circle</mat-icon>

@@ -18,6 +18,8 @@ export class CategoryService {
     getCategories(): Observable<Category[]> {
         return this.http.get<Category[]>(API_URL + "/", { withCredentials: false }).pipe(catchError((error) => this.handleError(error)));
     }
+   
+
     deleteCategory(elem: Category):Observable<Category>{
         return this.http.delete<Category>(API_URL + "/delete/"+elem.idCategory,{ withCredentials: false }) .pipe(catchError((error) => this.handleError(error)));
     }
@@ -39,5 +41,9 @@ export class CategoryService {
         console.error(error);
         return Observable.throw('Server error (' + error.status + '): ' + error);
     }
+
+
+
+    
 
 }

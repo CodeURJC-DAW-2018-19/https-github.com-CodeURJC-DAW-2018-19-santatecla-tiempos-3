@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, PageEvent } from '@angular/material';
 import { IntervalService, Interval } from './interval.service';
 import { LoginService } from 'src/app/auth/login.service';
+import { PagerService } from '../pager.service';
 
 @Component({
     selector: 'interval-view',
@@ -10,23 +11,39 @@ import { LoginService } from 'src/app/auth/login.service';
 })
 
 export class IntervalComponent implements OnInit {
-    constructor(public dialog: MatDialog, private service: IntervalService, public loginService: LoginService) { }
-    headers = ["#id", "Nombre", "Fecha de Inicio", "Fecha de Fin"]
+    constructor(public dialog: MatDialog, private service: IntervalService, public loginService: LoginService,private pagerService: PagerService) { }
+    headers = ["#id", "Nombre", "Fecha de Inicio", "Fecha de Fin"];
+    pageEvent: PageEvent;
+
     intervals: any[];
     name: string;
     start: Date;
     end: Date;
-
+    pager: any = {};
+    pagedItems: any[];
     ngOnInit(): void {
         this.service.getIntervals().subscribe(
             result => {
                 this.intervals = result;
+                this.setPage(1);
+
                 console.log(result);
             },
             error => {
                 console.log(<any>error);
             }
         )
+    }
+    setPage(page: number) {
+        if (page < 1 || page > this.pager.totalPages) {
+            return;
+        }
+
+        // get pager object from service
+        this.pager = this.pagerService.getPager(this.intervals.length, page);
+
+        // get current page of items
+        this.pagedItems = this.intervals.slice(this.pager.startIndex, this.pager.endIndex + 1);
     }
     openDialogAddInterval(): void {
         const dialogRef = this.dialog.open(DialogAddInterval, {

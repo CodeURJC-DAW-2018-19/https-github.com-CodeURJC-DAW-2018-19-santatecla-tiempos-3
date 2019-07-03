@@ -114,6 +114,7 @@ import { DialogAddInterval } from "./pages/interval/interval.component";
 import { DialogShowInterval } from "./pages/interval/interval.component";
 import { DialogLoginComponent } from "./login.component";
 
+import { PagerService } from "./pages/pager.service";
 
 import { CategoryService } from "./pages/category/category.service";
 import { EventService } from "./pages/event/event.service";
@@ -185,7 +186,7 @@ import { IntervalService } from "./pages/interval/interval.service";
     bootstrap: [AppComponent],
  
 
-    providers: [ LoginService,CategoryService,EventService,IntervalService,
+    providers: [ LoginService,CategoryService,EventService,IntervalService,PagerService,
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         { provide: LocationStrategy, useClass: HashLocationStrategy }
