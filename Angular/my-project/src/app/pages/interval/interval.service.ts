@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoginService } from 'src/app/auth/login.service';
 import { environment } from 'src/environments/environment';
 import { catchError } from 'rxjs/operators';
@@ -8,8 +8,8 @@ import { catchError } from 'rxjs/operators';
 export interface Interval {
     idInterval?: number;
     name: string;
-    ini: Date; 
-    fin: Date
+    start: Date; 
+    end: Date
     childrens: Interval[];
 }
 const API_URL =environment.apiEndpoint+"/api/intervals"
@@ -23,6 +23,13 @@ export class IntervalService {
     }
     deleteInterval(elem: Interval):Observable<Interval>{
         return this.http.delete<Interval>(API_URL + "/delete/"+elem.idInterval,{ withCredentials: false }) .pipe(catchError((error) => this.handleError(error)));
+    }
+    createInterval(elem: Interval): Observable<Interval> {
+        const body = JSON.stringify(elem);
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+        });
+        return this.http.post<Interval>(API_URL + "/create", body, { headers }).pipe(catchError((error) => this.handleError(error)));
     }
     private handleError(error: any) {
         console.error(error);

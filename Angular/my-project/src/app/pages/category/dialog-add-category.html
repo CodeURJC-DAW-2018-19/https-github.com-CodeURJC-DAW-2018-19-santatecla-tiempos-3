@@ -2,9 +2,9 @@
 <div mat-dialog-content>
   <div class="example-container">
     <mat-form-field>
-      <input matInput placeholder="Nombre">
+      <input matInput [(ngModel)]="data.name" Splaceholder="Nombre">
     </mat-form-field>
     <br>
-    <button mat-button>Añadir</button>
+    <button mat-button [mat-dialog-close]="data">Añadir</button>
   </div>
 </div>

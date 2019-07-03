@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoginService } from '../../auth/login.service';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
@@ -20,6 +20,13 @@ export class CategoryService {
     }
     deleteCategory(elem: Category):Observable<Category>{
         return this.http.delete<Category>(API_URL + "/delete/"+elem.idCategory,{ withCredentials: false }) .pipe(catchError((error) => this.handleError(error)));
+    }
+    createCategory(elem: Event): Observable<Event> {
+        const body = JSON.stringify(elem);
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+        });
+        return this.http.post<Event>(API_URL + "/create", body, { headers }).pipe(catchError((error) => this.handleError(error)));
     }
 
     private handleError(error: any) {

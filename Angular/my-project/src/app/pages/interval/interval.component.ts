@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { IntervalService, Interval } from './interval.service';
 import { LoginService } from 'src/app/auth/login.service';
 
@@ -12,10 +12,10 @@ import { LoginService } from 'src/app/auth/login.service';
 export class IntervalComponent implements OnInit {
     constructor(public dialog: MatDialog, private service: IntervalService, public loginService: LoginService) { }
     headers = ["#id", "Nombre", "Fecha de Inicio", "Fecha de Fin"]
-    intervals: any [];
+    intervals: any[];
     name: string;
-    ini: string;
-    fin: string;
+    start: Date;
+    end: Date;
 
     ngOnInit(): void {
         this.service.getIntervals().subscribe(
@@ -28,16 +28,32 @@ export class IntervalComponent implements OnInit {
             }
         )
     }
-    openDialog(): void {
-        this.dialog.open(DialogAddInterval, {});
+    openDialogAddInterval(): void {
+        const dialogRef = this.dialog.open(DialogAddInterval, {
+            width: '250px',
+            data: { name: this.name, startdate: this.start, enddate: this.end }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            result.startdate = result.startdate.toLocaleString();
+            result.enddate = result.enddate.toLocaleString();
+            console.log(result);
+            this.service.createInterval(result).subscribe(
+                result => {
+                    this.ngOnInit();
+                },
+                error => {
+                    console.log(<any>error);
+                }
+            )
+        })
     }
     openDialogSetInterval(elem: Interval): void {
         this.dialog.open(DialogAddInterval, {});
     }
-    deleteInterval(elem: Interval):void{
+    deleteInterval(elem: Interval): void {
         this.service.deleteInterval(elem).subscribe(
-            result=>{
-                console.log ("Se ha borrado un intervalo");
+            result => {
+                console.log("Se ha borrado un intervalo");
                 this.ngOnInit();
             },
             error => {
@@ -62,8 +78,8 @@ export class IntervalComponent implements OnInit {
     templateUrl: 'dialog-add-interval.html',
 })
 export class DialogAddInterval {
-    constructor(@Inject(MAT_DIALOG_DATA) public data: Interval) { }
-}   
+    constructor(public dialogRef: MatDialogRef<DialogAddInterval>, @Inject(MAT_DIALOG_DATA) public data: Interval) { }
+}
 
 /**
  * DIALOG SHOW INTERVAL
@@ -72,6 +88,6 @@ export class DialogAddInterval {
     selector: 'dialog-show-interval',
     templateUrl: 'dialog-show-interval.html',
 })
-export class DialogShowInterval{
+export class DialogShowInterval {
     constructor(@Inject(MAT_DIALOG_DATA) public data: Interval) { }
 }

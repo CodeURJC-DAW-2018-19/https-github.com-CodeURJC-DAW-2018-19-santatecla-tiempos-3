@@ -38,7 +38,7 @@ public class Interval{
 	public Interval() {
 	}
 	public Interval(String name,String startdate,String enddate) {
-	
+	 
 		this.name = name;
 		this.startdate=startdate;
 		this.enddate=enddate;

@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { EventService, Event } from './event.service';
 import { LoginService } from 'src/app/auth/login.service';
 
@@ -16,7 +16,7 @@ export class EventComponent implements OnInit {
     constructor(public dialog: MatDialog, private service: EventService, public loginService: LoginService) { }
     events: any[];
     headers = ["#id", "Nombre"];
-    name: string;
+    name: String;
     ngOnInit(): void {
         this.service.getEvents().subscribe(
             result => {
@@ -30,7 +30,22 @@ export class EventComponent implements OnInit {
     }
 
     openDialogAddEvent(): void {
-        this.dialog.open(DialogAddEvent, {});
+        const dialogRef = this.dialog.open(DialogAddEvent, {
+            width: '250px',
+            data: {name:this.name}
+        });
+        dialogRef.afterClosed().subscribe(result=>{  
+            console.log (result);
+             
+            this.service.createEvent(result).subscribe(
+                result => {
+                    this.ngOnInit();
+                },
+                error => {
+                    console.log(<any>error);
+                }
+            )
+        })
     }
     openDialogSetEvent(elem: Event): void {
         this.dialog.open(DialogAddEvent, {});
@@ -61,7 +76,7 @@ export class EventComponent implements OnInit {
     templateUrl: 'dialog-add-event.html',
 })
 export class DialogAddEvent {
-    constructor(@Inject(MAT_DIALOG_DATA) public data: Event) { }
+    constructor(public dialogRef: MatDialogRef<DialogAddEvent>,@Inject(MAT_DIALOG_DATA) public data: Event) { }
 }
 
 /**

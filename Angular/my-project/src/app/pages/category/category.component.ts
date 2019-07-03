@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { CategoryService, Category } from './category.service';
 import { LoginService } from 'src/app/auth/login.service';
 
@@ -30,7 +30,20 @@ export class CategoryComponent implements OnInit {
         )
     }
     openDialogAddCategory(): void {
-        this.dialog.open(DialogAddCategory, {});
+        const dialogRef = this.dialog.open(DialogAddCategory, {
+            width: '250px',
+            data: { name: this.name }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            this.service.createCategory(result).subscribe(
+                result => {
+                    this.ngOnInit();
+                },
+                error => {
+                    console.log(<any>error);
+                }
+            )
+        })
     }
     openDialogSetCategory(elem: Category): void {
         this.dialog.open(DialogAddCategory, {});
@@ -62,7 +75,7 @@ export class CategoryComponent implements OnInit {
     templateUrl: 'dialog-add-category.html',
 })
 export class DialogAddCategory {
-    constructor(@Inject(MAT_DIALOG_DATA) public data: Category) { }
+    constructor(public dialogRef: MatDialogRef<DialogAddCategory>,@Inject(MAT_DIALOG_DATA) public data: Category) { }
 }
 
 /**

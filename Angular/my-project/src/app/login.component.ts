@@ -61,5 +61,5 @@ export class LoginComponent {
   templateUrl: './dialog-login.html',
 })
 export class DialogLoginComponent {
-  constructor(dialogRef: MatDialogRef<DialogLoginComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData,public loginService: LoginService ) { }
+  constructor(public dialogRef: MatDialogRef<DialogLoginComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData,public loginService: LoginService ) { }
 }
