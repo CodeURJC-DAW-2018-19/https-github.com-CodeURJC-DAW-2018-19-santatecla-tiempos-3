@@ -46,12 +46,18 @@ public class EventRestController {
 		service.save(name);
 	}
 		
-	@PostMapping("/set/{id}")
+	/*@PostMapping("/set/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void setEventById(@PathVariable long id, @RequestParam String name) {
 		Event event = new Event(name,"Wiki 2", "Date 2");
 	     event.setIdEvent(id);
 	      service.save(event);
+	}*/
+	@PostMapping("/set/{id}")
+	@ResponseStatus(HttpStatus.CREATED)
+	public void setEventById(@PathVariable long id, @RequestBody Event event) {
+	     event.setIdEvent(id);
+	     service.save(event);
 	}
 
 	@DeleteMapping("/delete/{id}")

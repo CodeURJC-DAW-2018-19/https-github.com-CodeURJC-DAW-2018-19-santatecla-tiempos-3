@@ -32,11 +32,11 @@ export class EventComponent implements OnInit {
     openDialogAddEvent(): void {
         const dialogRef = this.dialog.open(DialogAddEvent, {
             width: '250px',
-            data: {name:this.name}
+            data: { name: this.name }
         });
-        dialogRef.afterClosed().subscribe(result=>{  
-            console.log (result);
-             
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(result);
+
             this.service.createEvent(result).subscribe(
                 result => {
                     this.ngOnInit();
@@ -47,13 +47,26 @@ export class EventComponent implements OnInit {
             )
         })
     }
-    openDialogSetEvent(elem: Event): void {
-        this.dialog.open(DialogAddEvent, {});
+    openDialogSetEvent(id: number): void {
+        const dialogRef = this.dialog.open(DialogAddEvent, {
+            width: '250px',
+            data: { name: this.name }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            this.service.setEvent(id, result).subscribe(
+                result => {
+                    this.ngOnInit();
+                },
+                error => {
+                    console.log(<any>error);
+                }
+            )
+        })
     }
-    deleteEvent(elem: Event):void{
-     this.service.deleteEvent(elem).subscribe(
-            result=>{
-                console.log ("Se ha borrado un evento");
+    deleteEvent(elem: Event): void {
+        this.service.deleteEvent(elem).subscribe(
+            result => {
+                console.log("Se ha borrado un evento");
                 this.ngOnInit();
             },
             error => {
@@ -76,7 +89,7 @@ export class EventComponent implements OnInit {
     templateUrl: 'dialog-add-event.html',
 })
 export class DialogAddEvent {
-    constructor(public dialogRef: MatDialogRef<DialogAddEvent>,@Inject(MAT_DIALOG_DATA) public data: Event) { }
+    constructor(public dialogRef: MatDialogRef<DialogAddEvent>, @Inject(MAT_DIALOG_DATA) public data: Event) { }
 }
 
 /**

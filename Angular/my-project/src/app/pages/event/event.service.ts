@@ -32,6 +32,13 @@ export class EventService {
         });
         return this.http.post<Event>(API_URL + "/create", body, { headers }).pipe(catchError((error) => this.handleError(error)));
     }
+    setEvent(id: number, elem: Event): Observable<Event> {
+        const body = JSON.stringify(elem);
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+        });
+        return this.http.post<Event>(API_URL + "/set/"+id, body, { headers }).pipe(catchError((error) => this.handleError(error)));
+    }
     private handleError(error: any) {
         console.error(error);
         return Observable.throw('Server error (' + error.status + '): ' + error);

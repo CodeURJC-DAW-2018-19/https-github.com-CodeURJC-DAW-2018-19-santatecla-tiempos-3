@@ -47,8 +47,21 @@ export class IntervalComponent implements OnInit {
             )
         })
     }
-    openDialogSetInterval(elem: Interval): void {
-        this.dialog.open(DialogAddInterval, {});
+    openDialogSetInterval(id: number): void {
+        const dialogRef = this.dialog.open(DialogAddInterval, {
+            width: '250px',
+            data: { name: this.name }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            this.service.setInterval(id, result).subscribe(
+                result => {
+                    this.ngOnInit();
+                },
+                error => {
+                    console.log(<any>error);
+                }
+            )
+        })
     }
     deleteInterval(elem: Interval): void {
         this.service.deleteInterval(elem).subscribe(

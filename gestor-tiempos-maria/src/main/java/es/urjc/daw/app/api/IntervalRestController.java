@@ -59,6 +59,12 @@ public class IntervalRestController {
 	       interval.setIdInterval(id);
 	       service.save(interval);
 	}
+	/*@PostMapping("/set/{id}")
+	@ResponseStatus(HttpStatus.CREATED)
+	public void setIntervalById(@PathVariable long id, @RequestBody Interval interval) {
+	       interval.setIdInterval(id);
+	       service.save(interval);
+	}*/
 
 	@DeleteMapping("/delete/{id}")
 	public void deleteIntervalById(@PathVariable long id){

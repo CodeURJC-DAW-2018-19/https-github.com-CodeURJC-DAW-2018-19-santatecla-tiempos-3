@@ -65,14 +65,20 @@ public class CategoryRestController {
 		service.save(categoy);
 	}
 		
-	@PostMapping("/set/{id}")
+	/*@PostMapping("/set/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void setCategoryById(@PathVariable long id, @RequestParam String name) {
 		Category category = new Category(name);
 	    category.setIdCategory(id);
 	    service.save(category);
+	}*/
+	@PostMapping("/set/{id}")
+	@ResponseStatus(HttpStatus.CREATED)
+	public void setCategoryById(@PathVariable long id, @RequestBody Category category) {
+	    category.setIdCategory(id);
+	    service.save(category);
 	}
-
+	
 	@DeleteMapping("/delete/{id}")
 	public void deleteCategoryById(@PathVariable long id){
 		service.delete(id);
