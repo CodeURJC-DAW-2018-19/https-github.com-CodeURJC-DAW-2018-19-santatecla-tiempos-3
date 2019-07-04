@@ -68,7 +68,22 @@ Una vez se haya seguido los pasos, hay que configurar Docker.Para ello hay que a
 ![Creación del docker_compose](screenshots/Phase%201/crear%20imagen.jpeg)
 # Enlace a la documentación
 
-##Angular
+
+# Angular
+
+
+
+
+cd para entrar en el fichero de la app web y ejecutar los siguientes comandos:
+
+    npm install
+    npm install -g @angular/cli
+
+para ejecutar el backend de spring:
+
+
+    npm start
+    
 Una vez que hemos realizado el proyecto con la API Rest y Docker, procedimos a la implementación de angular en todo el proyecto. El uso de angular en nuestro proyecto nos llevo a la inclusión de un nuevon lenguaje que es TypeScript, el cual se encarga de conectar el Frontend en Angular con nuestro Backend de la api rest en Spring Boot.
 
 ##Documentación
